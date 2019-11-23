@@ -116,6 +116,9 @@ master.menu.consumer.createOffer = Create new offer
 
 master.menu.sponsor = Sponsor
 master.menu.sponsor.listMineCommercialBanners = List my commercial banners
+master.menu.sponsor.listMineNonCommercialBanners = List my non commercial banners
+master.menu.sponsor.createCommercialBanners = Create commercial banner
+master.menu.sponsor.createNonCommercialBanners = Create non commercial banner
 
 # master.menu.user-account ####################################################
 

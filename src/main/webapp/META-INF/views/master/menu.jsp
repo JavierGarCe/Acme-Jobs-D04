@@ -113,6 +113,8 @@
 		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
 			<acme:menu-suboption code="master.menu.sponsor.listMineCommercialBanners" action="/sponsor/commercial-banner/list-mine" />
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.sponsor.listMineNonCommercialBanners" action="/sponsor/non-commercial-banner/list-mine" />
 		</acme:menu-option>
 
 
