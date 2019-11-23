@@ -60,6 +60,8 @@
 			<acme:menu-suboption code="master.menu.authenticated.listInvestorRecord" action="/authenticated/investor-record/list" />
 			<acme:menu-suboption code="master.menu.authenticated.requests.list" action="/authenticated/requests/list" />
 			<acme:menu-suboption code="master.menu.authenticated.challenge" action="/authenticated/challenge/list" />
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.listActiveJobs" action="/authenticated/job/list-active"/>
 		</acme:menu-option>
 
 
