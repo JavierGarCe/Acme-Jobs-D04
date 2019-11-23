@@ -112,6 +112,11 @@ master.menu.provider.requests.create = Create Request
 master.menu.consumer = Consumer
 master.menu.consumer.createOffer = Create new offer
 
+# master.menu.sponsor #########################################################
+
+master.menu.sponsor = Sponsor
+master.menu.sponsor.listMineCommercialBanners = List my commercial banners
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
