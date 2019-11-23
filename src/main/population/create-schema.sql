@@ -1,5 +1,4 @@
-
-    create table `administrator` (
+ create table `administrator` (
        `id` integer not null,
         `version` integer not null,
         `user_account_id` integer,
@@ -20,6 +19,15 @@
        `id` integer not null,
         `version` integer not null,
         `user_account_id` integer,
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `auditor` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `firm` varchar(255),
+        `responsability_statement` varchar(255),
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -51,7 +59,6 @@
         `picture` varchar(255),
         `slogan` varchar(255),
         `target_url` varchar(255),
-        `sponsor_id` integer not null,
         `credit_card` varchar(255),
         primary key (`id`)
     ) engine=InnoDB;
@@ -85,6 +92,15 @@
         `version` integer not null,
         `spamword` varchar(255),
         `threshold` double precision,
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `employer` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `company` varchar(255),
+        `sector` varchar(255),
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -137,7 +153,6 @@
         `picture` varchar(255),
         `slogan` varchar(255),
         `target_url` varchar(255),
-        `sponsor_id` integer not null,
         `jingle` varchar(255),
         primary key (`id`)
     ) engine=InnoDB;
@@ -198,15 +213,6 @@
         primary key (`id`)
     ) engine=InnoDB;
 
-    create table `sponsor` (
-       `id` integer not null,
-        `version` integer not null,
-        `user_account_id` integer,
-        `credit_card` varchar(255),
-        `organisation_name` varchar(255),
-        primary key (`id`)
-    ) engine=InnoDB;
-
     create table `user_account` (
        `id` integer not null,
         `version` integer not null,
@@ -216,6 +222,15 @@
         `identity_surname` varchar(255),
         `password` varchar(255),
         `username` varchar(255),
+        primary key (`id`)
+    ) engine=InnoDB;
+
+    create table `worker` (
+       `id` integer not null,
+        `version` integer not null,
+        `user_account_id` integer,
+        `qualifications` varchar(255),
+        `skills` varchar(255),
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -261,32 +276,32 @@ create index IDX2ijmvvrwi2t1isu2m2ncm5qn1 on `requests` (`ticker`);
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
+    alter table `auditor` 
+       add constraint FK_clqcq9lyspxdxcp6o4f3vkelj 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
+
     alter table `authenticated` 
        add constraint FK_h52w0f3wjoi68b63wv9vwon57 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
-
-    alter table `commercial_banner` 
-       add constraint FK_q9id3wc65gg49afc5tlr1c00n 
-       foreign key (`sponsor_id`) 
-       references `sponsor` (`id`);
 
     alter table `consumer` 
        add constraint FK_6cyha9f1wpj0dpbxrrjddrqed 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
-    alter table `non_commercial_banner` 
-       add constraint FK_2l8gpcwh19e7jj513or4r9dvb 
-       foreign key (`sponsor_id`) 
-       references `sponsor` (`id`);
+    alter table `employer` 
+       add constraint FK_na4dfobmeuxkwf6p75abmb2tr 
+       foreign key (`user_account_id`) 
+       references `user_account` (`id`);
 
     alter table `provider` 
        add constraint FK_b1gwnjqm6ggy9yuiqm0o4rlmd 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
-    alter table `sponsor` 
-       add constraint FK_20xk0ev32hlg96kqynl6laie2 
+    alter table `worker` 
+       add constraint FK_l5q1f33vs2drypmbdhpdgwfv3 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
