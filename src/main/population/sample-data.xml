@@ -483,4 +483,33 @@
 	<bean name="worker1Authenticated" class="acme.framework.entities.Authenticated">
 		<property name="userAccount" ref="worker1UserAccount" />
 	</bean>
+  
+  <!-- Auditor -->
+	<bean name="auditorUserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="auditor" />
+		<property name="password" value="auditor" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Auditor" />
+				<property name="surname" value="One" />
+				<property name="email" value="auditor.one@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="auditorAuditor" />
+				<ref bean="auditorAuthenticated" />
+			</list>
+		</property>
+	</bean>
+	<bean name="auditorAuditor" class="acme.entities.roles.Auditor">
+		<property name="firm" value="Acme Handyworker" />
+		<property name="responsabilityStatement" value="Test" />
+		<property name="userAccount" ref="auditorUserAccount" />
+	</bean>
+	
+	<bean name="auditorAuthenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="auditorUserAccount" />
+	</bean>
 </beans>
