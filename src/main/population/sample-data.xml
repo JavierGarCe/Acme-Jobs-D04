@@ -397,7 +397,64 @@
 		<property name="targetUrl" value="https://t3.ftcdn.net/jpg/00/92/53/56/240_F_92535664_IvFsQeHjBzfE6sD4VHdO8u5OHUSc6yHF.jpg"/>
 	</bean>
 	
-	<!-- Workers -->
+	<!-- Employers -->
+	<bean name="employer1UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="employer" />
+		<property name="password" value="employer" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Employer" />
+				<property name="surname" value="One" />
+				<property name="email" value="employer.one@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="employer1Employer" />
+				<ref bean="employer1Authenticated" />
+			</list>
+		</property>
+	</bean>
+	<bean name="employer1Employer" class="acme.entities.roles.Employer">
+		<property name="company" value="Employer 2, Inc."/>
+		<property name="sector" value="Sector 2"/>
+		<property name="userAccount" ref="employer1UserAccount" />
+	</bean>
+	
+	<bean name="employer1Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="employer1UserAccount" />
+	</bean>
+	
+		<bean name="employer2UserAccount" class="acme.framework.entities.UserAccount">
+		<property name="username" value="employer2" />
+		<property name="password" value="employer2" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Employer" />
+				<property name="surname" value="Two" />
+				<property name="email" value="employer.two@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="employer2Employer" />
+				<ref bean="employer2Authenticated" />
+			</list>
+		</property>
+	</bean>
+	<bean name="employer2Employer" class="acme.entities.roles.Employer">
+		<property name="company" value="Employer 2, Inc."/>
+		<property name="sector" value="Sector 2"/>
+		<property name="userAccount" ref="employer1UserAccount" />
+	</bean>
+	
+	<bean name="employer2Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="employer2UserAccount" />
+	</bean>
+  
+  <!-- Workers -->
 	
 	<bean name="worker1UserAccount" class="acme.framework.entities.UserAccount">
 		<property name="username" value="worker" />
@@ -426,5 +483,4 @@
 	<bean name="worker1Authenticated" class="acme.framework.entities.Authenticated">
 		<property name="userAccount" ref="worker1UserAccount" />
 	</bean>
-	
 </beans>
