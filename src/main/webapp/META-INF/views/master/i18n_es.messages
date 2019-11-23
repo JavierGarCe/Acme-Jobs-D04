@@ -112,6 +112,12 @@ master.menu.provider.requests.create = Crear una petición
 master.menu.consumer = Consumidor
 master.menu.consumer.createOffer = Crear nueva oferta
 
+# master.menu.employer ########################################################
+
+master.menu.employer = Empleador
+master.menu.employer.listMineEmployer = Lista de mis trabajos
+
+
 # master.menu.sponsor #########################################################
 
 master.menu.sponsor = Sponsor

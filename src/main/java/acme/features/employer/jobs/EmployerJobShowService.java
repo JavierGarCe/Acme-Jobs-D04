@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.job;
+package acme.features.employer.jobs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,23 +9,36 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.jobs.Duty;
 import acme.entities.jobs.Job;
+import acme.entities.roles.Employer;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
-import acme.framework.entities.Authenticated;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AuthenticatedJobShowService implements AbstractShowService<Authenticated, Job> {
+public class EmployerJobShowService implements AbstractShowService<Employer, Job> {
 
 	@Autowired
-	private AuthenticatedJobRepository repository;
+	private EmployerJobRepository repository;
 
 
 	@Override
 	public boolean authorise(final Request<Job> request) {
 		assert request != null;
 
-		return true;
+		boolean result;
+		int jobId;
+		Job job;
+		Employer employer;
+		Principal principal;
+
+		jobId = request.getModel().getInteger("id");
+		job = this.repository.findOneById(jobId);
+		employer = job.getEmployer();
+		principal = request.getPrincipal();
+		result = employer.getUserAccount().getId() == principal.getAccountId();
+
+		return result;
 	}
 
 	@Override
@@ -83,5 +96,4 @@ public class AuthenticatedJobShowService implements AbstractShowService<Authenti
 
 		return res;
 	}
-
 }

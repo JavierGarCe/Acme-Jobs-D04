@@ -113,6 +113,10 @@
 			<acme:menu-suboption code="master.menu.anonymous.listTopCompanyRecords" action="/anonymous/company-record/list-top" />
 		</acme:menu-option>
 		
+		<acme:menu-option code="master.menu.employer" access="hasRole('Employer')">
+			<acme:menu-suboption code="master.menu.employer.listMineEmployer" action="/employer/job/list-mine" />
+		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
 			<acme:menu-suboption code="master.menu.sponsor.listMineCommercialBanners" action="/sponsor/commercial-banner/list-mine" />
 		</acme:menu-option>

@@ -23,12 +23,11 @@
 	<acme:form-moment code="authenticated.job.form.label.deadline" path="deadline" />
 	<acme:form-url code="authenticated.job.form.label.moreInfo" path="moreInfo" />
 
-	<acme:form-textbox code="authenticated.job.form.label.descriptor.description" path="descriptor.description" />
-	<acme:form-textbox code="authenticated.job.form.label.descriptor.description" path="descriptor.duties" />
-
-		<jstl:forEach var="var" items="${descriptor.duties}" varStatus="vs">
-			<jstl:out value="${var.title}"/>
-		</jstl:forEach>
+	<acme:form-panel code="authenticated.job.form.label.descriptor">
+		<acme:form-textbox code="authenticated.job.form.label.descriptor.description" path="descriptor.description" />
+		<acme:form-textarea code="authenticated.job.form.label.descriptor.duties" path="duties" />
+	</acme:form-panel>
+	
 
 
 	<acme:form-return code="authenticated.job.form.button.return" />

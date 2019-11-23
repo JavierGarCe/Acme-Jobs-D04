@@ -474,7 +474,7 @@
 	<bean name="employer2Employer" class="acme.entities.roles.Employer">
 		<property name="company" value="Employer 2, Inc."/>
 		<property name="sector" value="Sector 2"/>
-		<property name="userAccount" ref="employer1UserAccount" />
+		<property name="userAccount" ref="employer2UserAccount" />
 	</bean>
 	
 	<bean name="employer2Authenticated" class="acme.framework.entities.Authenticated">
@@ -718,7 +718,7 @@
 	
 	<bean id="job05" class="acme.entities.jobs.Job">
 		<property name="reference" value="EEEE-JJJN"/>
-		<property name="status" value="DRAFT"/>
+		<property name="status" value="PUBLISHED"/>
 		<property name="title" value="job05"/>
 		<property name="deadline" value="2024/11/23 10:00"/>
 		<property name="salary" value="100 EUR"/>
