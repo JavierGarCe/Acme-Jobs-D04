@@ -27,6 +27,10 @@
        drop 
        foreign key FK_na4dfobmeuxkwf6p75abmb2tr;
 
+    alter table `message` 
+       drop 
+       foreign key `FKik4epe9dp5q6uenarfyia7xin`;
+
     alter table `non_commercial_banner` 
        drop 
        foreign key FK_2l8gpcwh19e7jj513or4r9dvb;
@@ -38,6 +42,14 @@
     alter table `sponsor` 
        drop 
        foreign key FK_20xk0ev32hlg96kqynl6laie2;
+
+    alter table `threads_message` 
+       drop 
+       foreign key `FK58982fmdeo1pyrmix0bf0s4xi`;
+
+    alter table `threads_message` 
+       drop 
+       foreign key `FKlgen64ps2xjfmb8vdswxfj87h`;
 
     alter table `worker` 
        drop 
@@ -73,6 +85,8 @@
 
     drop table if exists `investor_record`;
 
+    drop table if exists `message`;
+
     drop table if exists `non_commercial_banner`;
 
     drop table if exists `offer`;
@@ -86,6 +100,10 @@
     drop table if exists `shout`;
 
     drop table if exists `sponsor`;
+
+    drop table if exists `threads`;
+
+    drop table if exists `threads_message`;
 
     drop table if exists `user_account`;
 
