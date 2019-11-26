@@ -580,7 +580,7 @@
 		<property name="moment" value="2018/01/12 07:00"/>
 		<property name="tags" value="Tag1,Tag2"/>
 		<property name="body" value="Message 1"/>
-		<property name="user" ref="employer1Authenticated"/>
+		<property name="authenticated" ref="employer1Authenticated"/>
 	</bean>
 	
 	<bean id="message2" class="acme.entities.messages.Message">
@@ -588,7 +588,7 @@
 		<property name="moment" value="2018/01/12 08:00"/>
 		<property name="tags" value="Tag1,Tag2"/>
 		<property name="body" value="Message 2"/>
-		<property name="user" ref="employer1Authenticated"/>
+		<property name="authenticated" ref="employer1Authenticated"/>
 	</bean>
 	
 	<bean id="message3" class="acme.entities.messages.Message">
@@ -596,7 +596,7 @@
 		<property name="moment" value="2018/01/12 12:00"/>
 		<property name="tags" value="Tag1,Tag2"/>
 		<property name="body" value="Message 3"/>
-		<property name="user" ref="worker1Authenticated"/>
+		<property name="authenticated" ref="worker1Authenticated"/>
 	</bean>
 	
 	<bean id="message4" class="acme.entities.messages.Message">
@@ -604,7 +604,7 @@
 		<property name="moment" value="2018/02/12 08:30"/>
 		<property name="tags" value="Tag1,Tag2"/>
 		<property name="body" value="Message 4"/>
-		<property name="user" ref="worker1Authenticated"/>
+		<property name="authenticated" ref="worker1Authenticated"/>
 	</bean>
 	
 	<bean id="message5" class="acme.entities.messages.Message">
@@ -612,7 +612,7 @@
 		<property name="moment" value="2018/05/12 12:00"/>
 		<property name="tags" value="Tag1,Tag2"/>
 		<property name="body" value="Message 5"/>
-		<property name="user" ref="auditorAuthenticated"/>
+		<property name="authenticated" ref="auditorAuthenticated"/>
 	</bean>
 	
 	<bean id="message6" class="acme.entities.messages.Message">
@@ -620,12 +620,12 @@
 		<property name="moment" value="2018/04/15 13:30"/>
 		<property name="tags" value="Tag1,Tag2"/>
 		<property name="body" value="Message 6"/>
-		<property name="user" ref="sponsor1Authenticated"/>
+		<property name="authenticated" ref="sponsor1Authenticated"/>
 	</bean>
 	
 	<!--  Thread -->
 	
-	<bean id="thread1" class="acme.entities.threads.Threads">
+	<bean id="thread1" class="acme.entities.threads.Thread">
 		<property name="title" value="Thread 1"/>
 		<property name="moment" value="2018/01/12 07:00"/>
 		<property name="messages">
@@ -633,9 +633,14 @@
 				<ref bean="message1" />
 			</list>
 		</property>
+		<property name="authenticateds">
+			<list>
+				<ref bean="employer1Authenticated" />
+			</list>
+		</property>
 	</bean>
 	
-	<bean id="thread2" class="acme.entities.threads.Threads">
+	<bean id="thread2" class="acme.entities.threads.Thread">
 		<property name="title" value="Thread 2"/>
 		<property name="moment" value="2018/02/12 07:00"/>
 		<property name="messages">
@@ -646,14 +651,26 @@
 				<ref bean="message5" />
 			</list>
 		</property>
+		<property name="authenticateds">
+			<list>
+				<ref bean="employer1Authenticated" />
+				<ref bean="worker1Authenticated" />
+				<ref bean="auditorAuthenticated" /> 
+			</list>
+		</property>
 	</bean>
 	
-	<bean id="thread3" class="acme.entities.threads.Threads">
+	<bean id="thread3" class="acme.entities.threads.Thread">
 		<property name="title" value="Thread 3"/>
 		<property name="moment" value="2018/04/13 07:00"/>
 		<property name="messages">
 			<list>
 				<ref bean="message6" />
+			</list>
+		</property>
+		<property name="authenticateds">
+			<list>
+				<ref bean="sponsor1Authenticated" />
 			</list>
 		</property>
 	</bean>

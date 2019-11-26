@@ -156,7 +156,7 @@
         `moment` datetime(6),
         `tags` varchar(255),
         `title` varchar(255),
-        `user_id` integer not null,
+        `authenticated_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -236,7 +236,7 @@
         primary key (`id`)
     ) engine=InnoDB;
 
-    create table `threads` (
+    create table `thread` (
        `id` integer not null,
         `version` integer not null,
         `moment` datetime(6),
@@ -244,8 +244,13 @@
         primary key (`id`)
     ) engine=InnoDB;
 
-    create table `threads_message` (
-       `threads_id` integer not null,
+    create table `thread_authenticated` (
+       `thread_id` integer not null,
+        `authenticateds_id` integer not null
+    ) engine=InnoDB;
+
+    create table `thread_message` (
+       `thread_id` integer not null,
         `messages_id` integer not null
     ) engine=InnoDB;
 
@@ -299,8 +304,8 @@ create index IDX2ijmvvrwi2t1isu2m2ncm5qn1 on `requests` (`ticker`);
     alter table `requests` 
        add constraint UK_5v1h0kdr8vcps4i9e55k5gnc8 unique (`ticker`);
 
-    alter table `threads_message` 
-       add constraint UK_779o3oxdrex1jneqartluynkb unique (`messages_id`);
+    alter table `thread_message` 
+       add constraint UK_3jtjeexb82n6qyr77gcoqr4ck unique (`messages_id`);
 
     alter table `user_account` 
        add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (`username`);
@@ -341,8 +346,8 @@ create index IDX2ijmvvrwi2t1isu2m2ncm5qn1 on `requests` (`ticker`);
        references `user_account` (`id`);
 
     alter table `message` 
-       add constraint `FKik4epe9dp5q6uenarfyia7xin` 
-       foreign key (`user_id`) 
+       add constraint `FK3ny0h1379q528toyokq81noiu` 
+       foreign key (`authenticated_id`) 
        references `authenticated` (`id`);
 
     alter table `non_commercial_banner` 
@@ -360,15 +365,25 @@ create index IDX2ijmvvrwi2t1isu2m2ncm5qn1 on `requests` (`ticker`);
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
-    alter table `threads_message` 
-       add constraint `FK58982fmdeo1pyrmix0bf0s4xi` 
+    alter table `thread_authenticated` 
+       add constraint `FK1e718rov5gxl1f3tgjtl6vhtg` 
+       foreign key (`authenticateds_id`) 
+       references `authenticated` (`id`);
+
+    alter table `thread_authenticated` 
+       add constraint `FKjsja3s5mr66x5nxm9dd8kut3r` 
+       foreign key (`thread_id`) 
+       references `thread` (`id`);
+
+    alter table `thread_message` 
+       add constraint `FKrjegm8cujrxgbce9n1b78xuyo` 
        foreign key (`messages_id`) 
        references `message` (`id`);
 
-    alter table `threads_message` 
-       add constraint `FKlgen64ps2xjfmb8vdswxfj87h` 
-       foreign key (`threads_id`) 
-       references `threads` (`id`);
+    alter table `thread_message` 
+       add constraint `FKgjodhp3io8v829t92y1tdtb7u` 
+       foreign key (`thread_id`) 
+       references `thread` (`id`);
 
     alter table `worker` 
        add constraint FK_l5q1f33vs2drypmbdhpdgwfv3 

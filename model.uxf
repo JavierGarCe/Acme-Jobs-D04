@@ -115,10 +115,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1360</x>
+      <x>1336</x>
       <y>200</y>
-      <w>80</w>
-      <h>48</h>
+      <w>104</w>
+      <h>64</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Authenticated
@@ -691,7 +691,7 @@ created by ^</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1624</x>
+      <x>2024</x>
       <y>168</y>
       <w>248</w>
       <h>88</h>
@@ -709,12 +709,12 @@ Message
     <id>UMLClass</id>
     <coordinates>
       <x>1624</x>
-      <y>0</y>
+      <y>160</y>
       <w>248</w>
       <h>64</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Threads
+Thread
 --
 + title: String {NotBlank}
 + moment: Date {Temporal (TIMESTAMP),Past}
@@ -724,30 +724,44 @@ Threads
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1744</x>
-      <y>56</y>
-      <w>88</w>
-      <h>128</h>
+      <x>1864</x>
+      <y>176</y>
+      <w>176</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1..*
 m2=1
-belongsTo ^</panel_attributes>
-    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+&lt; belongsTo </panel_attributes>
+    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1432</x>
-      <y>208</y>
-      <w>208</w>
+      <y>232</y>
+      <w>608</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-x
 m1=1
 m2=0..*
-r1=+user
 &lt; createdBy
+</panel_attributes>
+    <additional_attributes>10.0;20.0;740.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1432</x>
+      <y>192</y>
+      <w>208</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1..*
+m2=0..*
+involvedIn &gt;
 </panel_attributes>
     <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
   </element>

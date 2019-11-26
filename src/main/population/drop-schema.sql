@@ -29,7 +29,7 @@
 
     alter table `message` 
        drop 
-       foreign key `FKik4epe9dp5q6uenarfyia7xin`;
+       foreign key `FK3ny0h1379q528toyokq81noiu`;
 
     alter table `non_commercial_banner` 
        drop 
@@ -43,13 +43,21 @@
        drop 
        foreign key FK_20xk0ev32hlg96kqynl6laie2;
 
-    alter table `threads_message` 
+    alter table `thread_authenticated` 
        drop 
-       foreign key `FK58982fmdeo1pyrmix0bf0s4xi`;
+       foreign key `FK1e718rov5gxl1f3tgjtl6vhtg`;
 
-    alter table `threads_message` 
+    alter table `thread_authenticated` 
        drop 
-       foreign key `FKlgen64ps2xjfmb8vdswxfj87h`;
+       foreign key `FKjsja3s5mr66x5nxm9dd8kut3r`;
+
+    alter table `thread_message` 
+       drop 
+       foreign key `FKrjegm8cujrxgbce9n1b78xuyo`;
+
+    alter table `thread_message` 
+       drop 
+       foreign key `FKgjodhp3io8v829t92y1tdtb7u`;
 
     alter table `worker` 
        drop 
@@ -101,9 +109,11 @@
 
     drop table if exists `sponsor`;
 
-    drop table if exists `threads`;
+    drop table if exists `thread`;
 
-    drop table if exists `threads_message`;
+    drop table if exists `thread_authenticated`;
+
+    drop table if exists `thread_message`;
 
     drop table if exists `user_account`;
 

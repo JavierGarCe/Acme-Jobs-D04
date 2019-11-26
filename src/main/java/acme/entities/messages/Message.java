@@ -45,6 +45,6 @@ public class Message extends DomainEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	Authenticated				user;
+	Authenticated				authenticated;
 
 }

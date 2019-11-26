@@ -6,7 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.threads.Threads;
+import acme.entities.threads.Thread;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
@@ -14,26 +14,26 @@ import acme.framework.entities.Principal;
 import acme.framework.services.AbstractListService;
 
 @Service
-public class AuthenticatedThreadsListService implements AbstractListService<Authenticated, Threads> {
+public class AuthenticatedThreadListService implements AbstractListService<Authenticated, Thread> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	AuthenticatedThreadsRepository repository;
+	AuthenticatedThreadRepository repository;
 
 
 	@Override
-	public boolean authorise(final Request<Threads> request) {
+	public boolean authorise(final Request<Thread> request) {
 		assert request != null;
 
 		return true;
 	}
 
 	@Override
-	public Collection<Threads> findMany(final Request<Threads> request) {
+	public Collection<Thread> findMany(final Request<Thread> request) {
 		assert request != null;
 
-		Collection<Threads> result;
+		Collection<Thread> result;
 		Principal principal;
 		principal = request.getPrincipal();
 		result = this.repository.findManyByAuthenticatedId(principal.getActiveRoleId());
@@ -41,7 +41,7 @@ public class AuthenticatedThreadsListService implements AbstractListService<Auth
 	}
 
 	@Override
-	public void unbind(final Request<Threads> request, final Threads entity, final Model model) {
+	public void unbind(final Request<Thread> request, final Thread entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;

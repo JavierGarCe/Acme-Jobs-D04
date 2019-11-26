@@ -9,28 +9,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.messages.Message;
-import acme.entities.threads.Threads;
+import acme.entities.threads.Thread;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AuthenticatedThreadsShowService implements AbstractShowService<Authenticated, Threads> {
+public class AuthenticatedThreadShowService implements AbstractShowService<Authenticated, Thread> {
 
 	@Autowired
-	AuthenticatedThreadsRepository repository;
+	AuthenticatedThreadRepository repository;
 
 
 	@Override
-	public boolean authorise(final Request<Threads> request) {
+	public boolean authorise(final Request<Thread> request) {
 		assert request != null;
-
-		return true;
+		int idThread = request.getModel().getInteger("id");
+		Thread thread = this.repository.findOneById(idThread);
+		List<Authenticated> authenticateds = (List<Authenticated>) thread.getAuthenticateds();
+		Principal principal = request.getPrincipal();
+		boolean result = authenticateds.stream().filter(x -> x.getUserAccount().getId() == principal.getAccountId()).count() > 0;
+		return result;
 	}
 
 	@Override
-	public void unbind(final Request<Threads> request, final Threads entity, final Model model) {
+	public void unbind(final Request<Thread> request, final Thread entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
@@ -57,11 +62,11 @@ public class AuthenticatedThreadsShowService implements AbstractShowService<Auth
 	}
 
 	@Override
-	public Threads findOne(final Request<Threads> request) {
+	public Thread findOne(final Request<Thread> request) {
 
 		assert request != null;
 
-		Threads result;
+		Thread result;
 		int id;
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOneById(id);
