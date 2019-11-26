@@ -6,7 +6,10 @@ employer.job.form.label.status = Stauts:
 employer.job.form.label.moreInfo = More info:
 employer.job.form.label.descriptor = Descriptor
 employer.job.form.label.descriptor.description = Description
-employer.job.form.label.descriptor.duties = Duties:
+employer.job.form.label.duty = Duty
+employer.job.form.label.duty.title = Title:
+employer.job.form.label.duty.description = Description:
+employer.job.form.label.duty.percentage = Percentage:
 employer.job.form.button.return = Return
 
 employer.job.list.label.title = Title

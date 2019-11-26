@@ -47,36 +47,32 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "title", "salary", "deadline", "reference", "status", "descriptor.description");
+		request.unbind(entity, model, "title", "salary", "deadline", "reference", "status", "descriptor", "descriptor.description", "descriptor.duties");
 
-		StringBuilder buffer;
-		List<Duty> duties;
-		duties = new ArrayList<>(entity.getDescriptor().getDuties());
-
-		buffer = new StringBuilder();
-		String lang = request.getLocale().getDisplayLanguage();
-
-		for (Duty duty : duties) {
-			if (lang.equals("English")) {
-				buffer.append("Title: ");
-				buffer.append(duty.getTitle());
-				buffer.append(", description: ");
-				buffer.append(duty.getDescription());
-				buffer.append(", percentage: ");
-				buffer.append(duty.getPercentage());
-				buffer.append("\n");
+		switch (entity.getStatus()) {
+		case DRAFT:
+			if (request.getLocale().getDisplayLanguage() == "English") {
+				model.setAttribute("status", "Draft");
 			} else {
-				buffer.append("Título: ");
-				buffer.append(duty.getTitle());
-				buffer.append(", descripción: ");
-				buffer.append(duty.getDescription());
-				buffer.append(", porcentaje: ");
-				buffer.append(duty.getPercentage());
-				buffer.append("\n");
+				model.setAttribute("status", "Borrador");
 			}
+			break;
+		default:
+			if (request.getLocale().getDisplayLanguage() == "English") {
+				model.setAttribute("status", "Published");
+			} else {
+				model.setAttribute("status", "Publicado");
+			}
+			break;
 		}
 
-		model.setAttribute("duties", buffer.toString());
+		List<Duty> duties;
+		duties = new ArrayList<>(entity.getDescriptor().getDuties());
+		for (int i = 0; i < duties.size(); i++) {
+			model.setAttribute("duty" + i + ".title", duties.get(i).getTitle());
+			model.setAttribute("duty" + i + ".description", duties.get(i).getDescription());
+			model.setAttribute("duty" + i + ".percentage", duties.get(i).getPercentage());
+		}
 
 	}
 

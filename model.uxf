@@ -85,8 +85,8 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1480</x>
-      <y>64</y>
+      <x>1496</x>
+      <y>96</y>
       <w>80</w>
       <h>48</h>
     </coordinates>
@@ -101,7 +101,7 @@ bg=yellow</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1480</x>
-      <y>0</y>
+      <y>24</y>
       <w>80</w>
       <h>48</h>
     </coordinates>
@@ -115,8 +115,8 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1480</x>
-      <y>136</y>
+      <x>1512</x>
+      <y>176</y>
       <w>80</w>
       <h>48</h>
     </coordinates>
@@ -745,8 +745,8 @@ Job
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
 JobStatus
 --
-+ draft
-+ published
++ DRAFT
++ PUBLISHED
 
 bg=yellow</panel_attributes>
     <additional_attributes/>
@@ -826,5 +826,38 @@ m1=1..*
 m2=1
 includes v</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1368</x>
+      <y>192</y>
+      <w>160</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1352</x>
+      <y>136</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1344</x>
+      <y>64</y>
+      <w>152</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;170.0;170.0;10.0</additional_attributes>
   </element>
 </diagram>

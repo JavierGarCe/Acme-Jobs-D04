@@ -23,10 +23,23 @@
 	<acme:form-moment code="employer.job.form.label.deadline" path="deadline" />
 	<acme:form-url code="employer.job.form.label.moreInfo" path="moreInfo" />
 
-	<acme:form-panel code="employer.job.form.label.descriptor">
-		<acme:form-textbox code="employer.job.form.label.descriptor.description" path="descriptor.description" />
-		<acme:form-textarea code="employer.job.form.label.descriptor.duties" path="duties" />
-	</acme:form-panel>
+
+	<b><acme:message code="employer.job.form.label.descriptor" /></b>
+	<div class="card border-secondary mb-3 ">
+		<div class="card-body">
+			<acme:form-textbox code="employer.job.form.label.descriptor.description" path="descriptor.description" />
+			<jstl:forEach begin="${0}" step="${1}" end="${descriptor.duties.size() - 1}" var="i">
+				<b><acme:message code="employer.job.form.label.duty" /></b>
+				<div class="card border-secondary mb-3">
+					<div class="card-body">
+						<acme:form-textbox code="employer.job.form.label.duty.title" path="duty${i}.title" />
+						<acme:form-textarea code="employer.job.form.label.duty.description" path="duty${i}.description" />
+						<acme:form-double code="employer.job.form.label.duty.percentage" path="duty${i}.percentage" />
+					</div>
+				</div>
+			</jstl:forEach>
+		</div>
+	</div>
 	
 
 
