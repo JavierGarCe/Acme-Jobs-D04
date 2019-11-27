@@ -30,7 +30,7 @@ public class SponsorNonCommercialBannerShowService implements AbstractShowServic
 		ncBanner = this.repository.findOneNonCommercialBannerById(ncBannerId);
 		sponsor = ncBanner.getSponsor();
 		principal = request.getPrincipal();
-		result = ncBanner.isTransient() || !ncBanner.isTransient() && sponsor.getUserAccount().getId() == principal.getAccountId();
+		result = sponsor.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 
