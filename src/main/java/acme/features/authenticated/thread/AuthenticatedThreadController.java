@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.threads;
+package acme.features.authenticated.thread;
 
 import javax.annotation.PostConstruct;
 

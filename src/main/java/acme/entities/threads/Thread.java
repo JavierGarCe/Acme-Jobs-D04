@@ -11,7 +11,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 
 import acme.entities.messages.Message;
@@ -27,26 +27,24 @@ public class Thread extends DomainEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long			serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
 	@NotBlank
-	private String				title;
+	private String						title;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Past
-	private Date				moment;
+	private Date						moment;
 
 	// Relationships -----------------------------------------------------------
 
-	@NotNull
-	@Valid
+	@NotEmpty
 	@OneToMany
-	Collection<Message>			messages;
+	Collection<@Valid Message>			messages;
 
-	@NotNull
-	@Valid
+	@NotEmpty
 	@ManyToMany
-	Collection<Authenticated>	authenticateds;
+	Collection<@Valid Authenticated>	authenticateds;
 }

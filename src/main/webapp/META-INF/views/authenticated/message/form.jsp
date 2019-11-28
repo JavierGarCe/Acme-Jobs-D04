@@ -11,7 +11,5 @@
 	<acme:form-textarea code="authenticated.message.form.label.tags" path="tags" />
 	<acme:form-textarea code="authenticated.message.form.label.user" path="author" />
 	<acme:form-moment code="authenticated.message.form.label.moment" path="moment" />
-	<button type="button" class="btn btn-default" onclick="javascript: clearReturnUrl(); redirect('/authenticated/thread/show?id=${idThread}')">
-	<acme:message code="authenticated.message.form.button.return"/>
-	</button>
+	<acme:form-return code="authenticated.message.form.button.return"/>
 </acme:form>

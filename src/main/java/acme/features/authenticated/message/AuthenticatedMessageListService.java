@@ -1,6 +1,7 @@
 
 package acme.features.authenticated.message;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +13,21 @@ import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
 import acme.framework.entities.Principal;
-import acme.framework.services.AbstractShowService;
+import acme.framework.services.AbstractListService;
 
 @Service
-public class AuthenticatedMessageShowService implements AbstractShowService<Authenticated, Message> {
+public class AuthenticatedMessageListService implements AbstractListService<Authenticated, Message> {
 
 	@Autowired
-	AuthenticatedMessageRepository repository;
+	AuthenticatedMessageRepository	repository;
+
+	int								idThread;
 
 
 	@Override
 	public boolean authorise(final Request<Message> request) {
 		assert request != null;
-		Thread thread = this.repository.findThreadByMessageId(request.getModel().getInteger("id"));
+		Thread thread = this.repository.findThreadById(request.getModel().getInteger("id"));
 		List<Authenticated> authenticateds = (List<Authenticated>) thread.getAuthenticateds();
 		Principal principal = request.getPrincipal();
 		boolean result = authenticateds.stream().filter(x -> x.getUserAccount().getId() == principal.getAccountId()).count() > 0;
@@ -37,20 +40,20 @@ public class AuthenticatedMessageShowService implements AbstractShowService<Auth
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "title", "moment", "tags", "body");
-		model.setAttribute("author", entity.getAuthenticated().getUserAccount().getUsername());
-
+		request.unbind(entity, model, "title", "tags", "body");
+		model.setAttribute("idThread", this.idThread);
 	}
 
 	@Override
-	public Message findOne(final Request<Message> request) {
+	public Collection<Message> findMany(final Request<Message> request) {
 
 		assert request != null;
 
-		Message result;
-		int id;
-		id = request.getModel().getInteger("id");
-		result = this.repository.findOneById(id);
+		Collection<Message> result;
+		this.idThread = request.getModel().getInteger("id");
+		Thread thread = this.repository.findThreadById(this.idThread);
+		thread.getMessages().size();
+		result = thread.getMessages();
 		return result;
 	}
 
