@@ -29,6 +29,6 @@
 	</acme:form-panel>
 	
 
-
+<acme:menu-suboption code="master.menu.employer.listAuditRecords" action="/employer/auditRecord/list-mine?id=${param.id}" />
 	<acme:form-return code="employer.job.form.button.return" />
 </acme:form>

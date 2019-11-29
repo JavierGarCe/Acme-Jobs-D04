@@ -23,6 +23,18 @@
         primary key (`id`)
     ) engine=InnoDB;
 
+    create table `audit_record` (
+       `id` integer not null,
+        `version` integer not null,
+        `body` varchar(255),
+        `moment` datetime(6),
+        `status` integer,
+        `title` varchar(255),
+        `auditor_id` integer not null,
+        `job_id` integer not null,
+        primary key (`id`)
+    ) engine=InnoDB;
+
     create table `auditor` (
        `id` integer not null,
         `version` integer not null,
@@ -303,6 +315,7 @@ create index IDX9pkce3d1y6w47wadap5s5xptc on `company_record` (`stars`);
     alter table `descriptor_duty` 
        add constraint UK_kvr5rclgwa51d625rmx13ke96 unique (`duties_id`);
 create index IDXk2t3uthe649ao1jllcuks0gv4 on `investor_record` (`stars`);
+create index IDXfdmpnr8o4phmk81sqsano16r on `job` (`deadline`);
 
     alter table `job` 
        add constraint UK_qpodqtu8nvqkof3olnqnqcv2l unique (`descriptor_id`);
@@ -332,6 +345,16 @@ create index IDX2ijmvvrwi2t1isu2m2ncm5qn1 on `requests` (`ticker`);
        add constraint FK_6lnbc6fo3om54vugoh8icg78m 
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
+
+    alter table `audit_record` 
+       add constraint `FKdcrrgv6rkfw2ruvdja56un4ji` 
+       foreign key (`auditor_id`) 
+       references `auditor` (`id`);
+
+    alter table `audit_record` 
+       add constraint `FKlbvbyimxf6pxvbhkdd4vfhlnd` 
+       foreign key (`job_id`) 
+       references `job` (`id`);
 
     alter table `auditor` 
        add constraint FK_clqcq9lyspxdxcp6o4f3vkelj 

@@ -521,8 +521,8 @@ Customization
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1720</x>
-      <y>496</y>
+      <x>1848</x>
+      <y>528</y>
       <w>304</w>
       <h>104</h>
     </coordinates>
@@ -538,7 +538,7 @@ Customization
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1608</x>
+      <x>1704</x>
       <y>712</y>
       <w>296</w>
       <h>88</h>
@@ -552,8 +552,8 @@ CommercialBanner
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1912</x>
-      <y>712</y>
+      <x>2016</x>
+      <y>720</y>
       <w>224</w>
       <h>88</h>
     </coordinates>
@@ -566,24 +566,24 @@ NonCommercialBanner
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1744</x>
-      <y>592</y>
-      <w>144</w>
-      <h>136</h>
+      <x>1840</x>
+      <y>624</y>
+      <w>176</w>
+      <h>104</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>160.0;10.0;10.0;150.0</additional_attributes>
+    <additional_attributes>200.0;10.0;10.0;110.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1888</x>
-      <y>592</y>
-      <w>104</w>
-      <h>136</h>
+      <x>2016</x>
+      <y>624</y>
+      <w>80</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;110.0;150.0</additional_attributes>
+    <additional_attributes>10.0;10.0;80.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -625,7 +625,7 @@ Worker
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1520</x>
+      <x>1624</x>
       <y>280</y>
       <w>168</w>
       <h>72</h>
@@ -640,8 +640,8 @@ Auditor
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1720</x>
-      <y>280</y>
+      <x>1848</x>
+      <y>272</y>
       <w>320</w>
       <h>96</h>
     </coordinates>
@@ -655,38 +655,38 @@ Sponsor
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1872</x>
-      <y>368</y>
+      <x>2000</x>
+      <y>360</y>
       <w>88</w>
-      <h>144</h>
+      <h>184</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
 m1=0..n
 m2=1
 created by ^</panel_attributes>
-    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;210.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1368</x>
       <y>240</y>
-      <w>240</w>
+      <w>344</w>
       <h>56</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;280.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;410.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1376</x>
       <y>216</y>
-      <w>480</w>
-      <h>80</h>
+      <w>608</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;580.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;740.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -743,7 +743,7 @@ Job
       <h>72</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
-JobStatus
+Status
 --
 + draft
 + published
@@ -826,5 +826,50 @@ m1=1..*
 m2=1
 includes v</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1712</x>
+      <y>432</y>
+      <w>216</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+AuditRecord
+--
++title: String{NotBlank}
++moment: Date (Temporal(TIMESTAMP)), Past)
++status : Estado{NotBlank}
++body: String{NotBlank}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1760</x>
+      <y>344</y>
+      <w>80</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=0..*
+m2=1
+writed by ^</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1592</x>
+      <y>480</y>
+      <w>136</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=x-&gt;
+m1=0..*
+m2=1
+have &gt;</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>

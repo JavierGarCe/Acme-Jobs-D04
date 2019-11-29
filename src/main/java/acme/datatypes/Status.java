@@ -1,6 +1,6 @@
 
 package acme.datatypes;
 
-public enum JobStatus {
+public enum Status {
 	DRAFT, PUBLISHED
 }

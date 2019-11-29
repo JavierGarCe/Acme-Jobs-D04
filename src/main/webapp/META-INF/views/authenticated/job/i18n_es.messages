@@ -12,3 +12,4 @@ authenticated.job.form.button.return = Volver
 authenticated.job.list.label.title = Título
 authenticated.job.list.label.salary = Salario
 authenticated.job.list.label.deadline = Fecha límite
+master.menu.authenticated.listAuditRecords = link para el registro de auditorias del trabajo

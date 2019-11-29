@@ -18,7 +18,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
-import acme.datatypes.JobStatus;
+import acme.datatypes.Status;
 import acme.entities.roles.Employer;
 import acme.framework.datatypes.Money;
 import acme.framework.entities.DomainEntity;
@@ -41,7 +41,7 @@ public class Job extends DomainEntity {
 	private String				reference;
 
 	@NotNull
-	private JobStatus			status;
+	private Status			status;
 
 	@NotBlank
 	private String				title;

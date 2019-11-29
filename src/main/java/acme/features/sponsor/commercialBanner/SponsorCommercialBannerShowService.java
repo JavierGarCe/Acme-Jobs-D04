@@ -30,7 +30,7 @@ public class SponsorCommercialBannerShowService implements AbstractShowService<S
 		cBanner = this.repository.findOneCommercialBannerById(cBannerId);
 		sponsor = cBanner.getSponsor();
 		principal = request.getPrincipal();
-		result = cBanner.isTransient() || !cBanner.isTransient() && sponsor.getUserAccount().getId() == principal.getAccountId();
+		result = sponsor.getUserAccount().getId() == principal.getAccountId();
 		return result;
 	}
 
