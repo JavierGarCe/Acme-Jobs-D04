@@ -1,4 +1,5 @@
-alter table `administrator` 
+
+    alter table `administrator` 
        drop 
        foreign key FK_2a5vcjo3stlfcwadosjfq49l1;
 
@@ -13,6 +14,14 @@ alter table `administrator`
     alter table `application` 
        drop 
        foreign key `FKmbjdoxi3o93agxosoate4sxbt`;
+
+    alter table `audit_record` 
+       drop 
+       foreign key `FKdcrrgv6rkfw2ruvdja56un4ji`;
+
+    alter table `audit_record` 
+       drop 
+       foreign key `FKlbvbyimxf6pxvbhkdd4vfhlnd`;
 
     alter table `auditor` 
        drop 
@@ -50,6 +59,10 @@ alter table `administrator`
        drop 
        foreign key `FK3rxjf8uh6fh2u990pe8i2at0e`;
 
+    alter table `message` 
+       drop 
+       foreign key `FK3ny0h1379q528toyokq81noiu`;
+
     alter table `non_commercial_banner` 
        drop 
        foreign key FK_2l8gpcwh19e7jj513or4r9dvb;
@@ -62,6 +75,22 @@ alter table `administrator`
        drop 
        foreign key FK_20xk0ev32hlg96kqynl6laie2;
 
+    alter table `thread_authenticated` 
+       drop 
+       foreign key `FK1e718rov5gxl1f3tgjtl6vhtg`;
+
+    alter table `thread_authenticated` 
+       drop 
+       foreign key `FKjsja3s5mr66x5nxm9dd8kut3r`;
+
+    alter table `thread_message` 
+       drop 
+       foreign key `FKrjegm8cujrxgbce9n1b78xuyo`;
+
+    alter table `thread_message` 
+       drop 
+       foreign key `FKgjodhp3io8v829t92y1tdtb7u`;
+
     alter table `worker` 
        drop 
        foreign key FK_l5q1f33vs2drypmbdhpdgwfv3;
@@ -73,6 +102,8 @@ alter table `administrator`
     drop table if exists `anonymous`;
 
     drop table if exists `application`;
+
+    drop table if exists `audit_record`;
 
     drop table if exists `auditor`;
 
@@ -106,6 +137,8 @@ alter table `administrator`
 
     drop table if exists `job`;
 
+    drop table if exists `message`;
+
     drop table if exists `non_commercial_banner`;
 
     drop table if exists `offer`;
@@ -119,6 +152,12 @@ alter table `administrator`
     drop table if exists `shout`;
 
     drop table if exists `sponsor`;
+
+    drop table if exists `thread`;
+
+    drop table if exists `thread_authenticated`;
+
+    drop table if exists `thread_message`;
 
     drop table if exists `user_account`;
 

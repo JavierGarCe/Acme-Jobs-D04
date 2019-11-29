@@ -23,14 +23,16 @@
 	<acme:form-moment code="auditor.job.form.label.deadline" path="deadline" />
 	<acme:form-url code="auditor.job.form.label.moreInfo" path="moreInfo" />
 	<acme:form-panel code="auditor.job.form.label.descriptor">
-		<acme:form-textbox code="auditor.job.form.label.descriptor.description" path="descriptor.description" />
-		<acme:form-textarea code="auditor.job.form.label.descriptor.duties" path="duties" />
+		<acme:form-textarea code="auditor.job.form.label.descriptor.description" path="descriptor.description" />
+
 	</acme:form-panel>
 	
 	
 	<acme:menu-suboption code="master.menu.anonymous.listAuditRecords" action="/auditor/auditRecord/list-mine?id=${param.id}" />
 	<acme:form-return code="auditor.job.form.button.return" />
-
+	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/auditor/duty/list?id=${id}')" class="btn btn-primary">
+		<acme:message code="employer.job.form.label.descriptorMessage" />
+	</button>
 	
 	
 	

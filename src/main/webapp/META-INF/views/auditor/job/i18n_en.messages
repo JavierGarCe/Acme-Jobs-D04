@@ -13,3 +13,4 @@ auditor.job.list.label.title = Title
 auditor.job.list.label.salary = Salary
 auditor.job.list.label.deadline = Deadline
 master.menu.anonymous.listAuditRecords = link of audit records of job
+employer.job.form.label.descriptorMessage = Watch duties

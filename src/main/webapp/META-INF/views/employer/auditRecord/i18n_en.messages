@@ -1,8 +1,8 @@
-auditor.auditRecord.list.label.title = Title
-auditor.auditRecord.list.label.moment = Moment
-auditor.auditRecord.list.label.status = Status
-auditor.auditRecord.form.label.title = Title
-auditor.auditRecord.form.label.moment = Moment
-auditor.auditRecord.form.label.status = Status
-auditor.auditRecord.form.label.body = Body
-auditor.auditRecord.form.button.return = Return
+employer.auditRecord.list.label.title = Title
+employer.auditRecord.list.label.moment = Moment
+employer.auditRecord.list.label.status = Status
+employer.auditRecord.form.label.title = Title
+employer.auditRecord.form.label.moment = Moment
+employer.auditRecord.form.label.status = Status
+employer.auditRecord.form.label.body = Body
+employer.auditRecord.form.button.return = Return
