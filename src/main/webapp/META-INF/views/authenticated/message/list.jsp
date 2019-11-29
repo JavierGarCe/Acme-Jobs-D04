@@ -10,14 +10,4 @@
 	<acme:list-column code="authenticated.message.list.label.tags" path="tags" />
 </acme:list>
 
-<jstl:if test="${model$size == 1}">
-<jstl:set var="idT" value="${idThread}"/>	
-</jstl:if>
-<jstl:if test="${model$size >= 2}">
-<jstl:set var="thread" value="idThread[0]" />
-<jstl:set var="idT" value="${requestScope[thread]}"/>
-</jstl:if>
-
-<button type="button" class="btn btn-default" onclick="javascript: clearReturnUrl(); redirect('/authenticated/thread/show?id=${idT}')">
-	<acme:message code="authenticated.message.form.button.return"/>
-	</button>
+<acme:form-return code="authenticated.message.form.button.return"/>

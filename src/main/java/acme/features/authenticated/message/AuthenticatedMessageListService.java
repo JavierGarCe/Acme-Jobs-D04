@@ -19,9 +19,7 @@ import acme.framework.services.AbstractListService;
 public class AuthenticatedMessageListService implements AbstractListService<Authenticated, Message> {
 
 	@Autowired
-	AuthenticatedMessageRepository	repository;
-
-	int								idThread;
+	AuthenticatedMessageRepository repository;
 
 
 	@Override
@@ -41,7 +39,6 @@ public class AuthenticatedMessageListService implements AbstractListService<Auth
 		assert model != null;
 
 		request.unbind(entity, model, "title", "tags", "body");
-		model.setAttribute("idThread", this.idThread);
 	}
 
 	@Override
@@ -50,8 +47,7 @@ public class AuthenticatedMessageListService implements AbstractListService<Auth
 		assert request != null;
 
 		Collection<Message> result;
-		this.idThread = request.getModel().getInteger("id");
-		Thread thread = this.repository.findThreadById(this.idThread);
+		Thread thread = this.repository.findThreadById(request.getModel().getInteger("id"));
 		thread.getMessages().size();
 		result = thread.getMessages();
 		return result;
