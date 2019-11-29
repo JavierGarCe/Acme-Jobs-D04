@@ -18,6 +18,12 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select count(*) from InvestorRecord i ")
 	Integer numInvestorRecord();
 
+	@Query("select count(*) from Job")
+	Integer numJobs();
+
+	@Query("select count(*) from Application")
+	Integer numApplications();
+
 	@Query("select count(*) from Offer i where i.deadline >= current_date")
 	Integer numOffers();
 
@@ -53,5 +59,14 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	@Query("select stddev(minReward.amount) from Offer o where o.deadline >= current_date")
 	Double stDevMinActiveOffer();
+
+	@Query("select avg(select count(j) from Job j where j.employer.id=e.id) from Employer e")
+	Double averageNumberOfJobsPerEmployer();
+
+	@Query("select avg(select count(a) from Application a where a.job.employer.id=e.id) from Employer e")
+	Double averageNumberOfApplicationsPerEmployer();
+
+	@Query("select avg(select count(a) from Application a where a.worker.id=w.id) from Worker w")
+	Double averageNumberOfApplicationsPerWorker();
 
 }

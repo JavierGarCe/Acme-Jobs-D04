@@ -3,12 +3,13 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-<div>
+<div >
 
 	<canvas id="canvas"></canvas>
 
 </div>
 
+<div style="clear:left"> <canvas id="canvas2"></canvas> </div>
 
 
 <script type="text/javascript">
@@ -82,6 +83,74 @@
 			]
 
 		};
+		
+		var data2 = {
+
+				labels : [
+					<jstl:forEach var ="i" items="${jobsByStatusRatio}" varStatus="status">
+					"<jstl:out value='${i[1]}'/>",
+					</jstl:forEach>
+					
+					<jstl:forEach var ="i" items="${applicationsByStatusRatio}" varStatus="status">
+					<jstl:choose>
+					<jstl:when test="${status.last}">
+					"<jstl:out value='${i[1]}'/>"
+					</jstl:when>
+					<jstl:when test="${!status.last}">
+					"<jstl:out value='${i[1]}'/>",
+					</jstl:when>
+					</jstl:choose>
+					</jstl:forEach>
+					
+					
+
+					],
+
+				datasets : [
+
+					{
+
+						backgroundColor:"rgba(0, 0, 1, 1)",
+
+						label:"<acme:message code='jobsByStatus'/>",
+
+						data :[
+							<jstl:forEach var ="i" items="${jobsByStatusRatio}" varStatus="status">
+							<jstl:out value='${i[0]}'/>,
+							</jstl:forEach>
+							<jstl:forEach var ="i" items="${applicationsByStatusRatio}" varStatus="status">
+							<jstl:out value='0'/>,
+							</jstl:forEach>
+							
+							
+
+					 	]
+
+					},
+					
+					{
+
+						backgroundColor:"rgba(255, 0, 0, 0.8)",
+
+						label:"<acme:message code='applicationsByStatus'/>",
+
+						data :[
+							<jstl:forEach var ="i" items="${jobsByStatusRatio}" varStatus="status">
+							<jstl:out value='0'/>,
+							</jstl:forEach>
+							<jstl:forEach var ="i" items="${applicationsByStatusRatio}" varStatus="status">
+							<jstl:out value='${i[0]}'/>,
+							</jstl:forEach>
+
+					 	]
+
+					}
+
+					
+
+				]
+
+			};
 
 		var options = {
 
@@ -126,6 +195,21 @@
 			type : "bar",
 
 			data : data,
+
+			options : options
+
+		});
+		var canvas2, context2;
+		
+		canvas2=document.getElementById("canvas2");
+		
+		context2=canvas2.getContext("2d");
+		
+		new Chart( context2, {
+
+			type : "bar",
+
+			data : data2,
 
 			options : options
 
