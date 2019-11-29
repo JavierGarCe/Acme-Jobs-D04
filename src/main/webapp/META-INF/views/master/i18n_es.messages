@@ -69,6 +69,7 @@ master.menu.authenticated.listAnnouncements = Lista de anuncios
 master.menu.authenticated.listInvestorRecord = Lista de registros de inversores
 master.menu.authenticated.requests.list = Lista de peticiones
 master.menu.authenticated.challenge = Lista de desafíos
+master.menu.authenticated.threads = Listar mis hilos
 master.menu.authenticated.listActiveJobs = Lista de trabajos activos
 
 # master.menu.administrator ###################################################
