@@ -16,5 +16,5 @@ authenticated.job.form.button.return = Return
 authenticated.job.list.label.title = Title
 authenticated.job.list.label.salary = Salary
 authenticated.job.list.label.deadline = Deadline
-master.menu.authenticated.listAuditRecords =  link of audit records of job
+master.menu.authenticated.listAuditRecords =  Audit records
 authenticated.job.form.label.descriptorMessage = Watch duties

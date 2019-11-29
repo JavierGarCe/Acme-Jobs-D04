@@ -16,9 +16,7 @@ import acme.framework.services.AbstractListService;
 public class EmployerDutyListService implements AbstractListService<Employer, Duty> {
 
 	@Autowired
-	private EmployerDutyRepository	repository;
-
-	int								jobId; //Necesario para el return
+	private EmployerDutyRepository repository;
 
 
 	@Override
@@ -35,8 +33,6 @@ public class EmployerDutyListService implements AbstractListService<Employer, Du
 
 		request.unbind(entity, model, "title", "description");
 
-		model.setAttribute("jobId", this.jobId);
-
 	}
 
 	@Override
@@ -47,8 +43,6 @@ public class EmployerDutyListService implements AbstractListService<Employer, Du
 		int id;
 
 		id = request.getModel().getInteger("id");
-
-		this.jobId = request.getModel().getInteger("id"); //Para el return
 
 		result = this.repository.findDutiesByJobId(id);
 

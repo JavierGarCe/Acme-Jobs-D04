@@ -16,9 +16,7 @@ import acme.framework.services.AbstractListService;
 public class AuditorDutyListService implements AbstractListService<Auditor, Duty> {
 
 	@Autowired
-	private AuditorDutyRepository	repository;
-
-	int								jobId; //Necesario para el return
+	private AuditorDutyRepository repository;
 
 
 	@Override
@@ -34,9 +32,6 @@ public class AuditorDutyListService implements AbstractListService<Auditor, Duty
 		assert model != null;
 
 		request.unbind(entity, model, "title", "description");
-
-		model.setAttribute("jobId", this.jobId);
-
 	}
 
 	@Override
@@ -47,8 +42,6 @@ public class AuditorDutyListService implements AbstractListService<Auditor, Duty
 		int id;
 
 		id = request.getModel().getInteger("id");
-
-		this.jobId = request.getModel().getInteger("id"); //Para el return
 
 		result = this.repository.findDutiesByJobId(id);
 

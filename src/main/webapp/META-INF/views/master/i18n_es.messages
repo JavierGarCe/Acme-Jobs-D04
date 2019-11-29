@@ -134,8 +134,8 @@ master.menu.sponsor.createNonCommercialBanners = Crear banner no comercial
 # master.menu.auditor #########################################################
 
 master.menu.auditor = Auditor
-master.menu.sponsor.listMineJobs = Listar trabajos por los que he escrito
-master.menu.sponsor.listOthers = Listar el resto
+master.menu.sponsor.listMineJobs = Trabajos que he auditado
+master.menu.sponsor.listOthers = Trabajos que no he auditado
 
 # master.menu.user-account ####################################################
 

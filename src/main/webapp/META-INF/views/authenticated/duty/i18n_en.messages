@@ -5,4 +5,4 @@ authenticated.duty.form.button.return = Return
 
 authenticated.duty.list.label.title = Title
 authenticated.duty.list.label.description = Description
-authenticated.job.list.button.return = Volver
+authenticated.job.list.button.return = Return

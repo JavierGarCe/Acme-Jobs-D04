@@ -26,13 +26,17 @@
 		<acme:form-textarea code="auditor.job.form.label.descriptor.description" path="descriptor.description" />
 
 	</acme:form-panel>
+		
+	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/auditor/auditRecord/list-mine?id=${param.id}')" class="btn btn-primary">
+		<acme:message code="master.menu.anonymous.listAuditRecords" />
+	</button>
 	
-	
-	<acme:menu-suboption code="master.menu.anonymous.listAuditRecords" action="/auditor/auditRecord/list-mine?id=${param.id}" />
-	<acme:form-return code="auditor.job.form.button.return" />
 	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/auditor/duty/list?id=${id}')" class="btn btn-primary">
 		<acme:message code="employer.job.form.label.descriptorMessage" />
 	</button>
+	
+		<acme:form-return code="auditor.job.form.button.return" />
+	
 	
 	
 	

@@ -18,4 +18,4 @@ employer.job.list.label.title = Title
 employer.job.list.label.salary = Salary
 employer.job.list.label.deadline = Deadline
 
-master.menu.employer.listAuditRecords = link of audit records of job
+master.menu.employer.listAuditRecords = Audit records

@@ -26,17 +26,16 @@
 	<acme:form-panel code="authenticated.job.form.label.descriptor">
 		<acme:form-textarea code="authenticated.job.form.label.descriptor.description" path="descriptor.description" />
 	</acme:form-panel>
-
-
-	<acme:menu-suboption code="master.menu.authenticated.listAuditRecords" action="/authenticated/auditRecord/list-mine?id=${param.id}" />
-	<acme:form-return code="authenticated.job.form.button.return" />
+	
+	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/authenticated/auditRecord/list-mine?id=${param.id}')" class="btn btn-primary">
+		<acme:message code="master.menu.authenticated.listAuditRecords" />
+	</button>
   
 	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/authenticated/duty/list?id=${id}')" class="btn btn-primary">
 		<acme:message code="authenticated.job.form.label.descriptorMessage" />
 	</button>
 
-	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/authenticated/job/list-active')" class="btn btn-light">
-		<acme:message code="authenticated.job.form.button.return" />
-	</button>
+	<acme:form-return code="authenticated.job.form.button.return" />
+
 
 </acme:form>

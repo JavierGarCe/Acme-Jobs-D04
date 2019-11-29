@@ -19,16 +19,4 @@
 	<acme:list-column code="employer.duty.list.label.description" path="description" width="40%"/>
 </acme:list>
 
-<jstl:if test="${model$size == 1 }">
-<jstl:set var="jobIdT" value="${jobId}"/>
-</jstl:if>
-<jstl:if test="${model$size >= 2 }">
-<jstl:set var="jobId" value="jobId[0]"/>
-<jstl:set var="jobIdT" value="${requestScope[jobId]}"/>
-</jstl:if>
-
-	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/employer/job/show?id=${jobIdT}')"
-			class="btn btn-light">
-			<acme:message code="employer.job.list.button.return" />
-		</button>
-		
+<acme:form-return code="employer.job.list.button.return"/>
