@@ -22,13 +22,17 @@
 	<acme:form-money code="authenticated.job.form.label.salary" path="salary" />
 	<acme:form-moment code="authenticated.job.form.label.deadline" path="deadline" />
 	<acme:form-url code="authenticated.job.form.label.moreInfo" path="moreInfo" />
-
+	<acme:form-textbox code="authenticated.job.form.label.employer.name" path="employer.userAccount.username" />
 	<acme:form-panel code="authenticated.job.form.label.descriptor">
-		<acme:form-textbox code="authenticated.job.form.label.descriptor.description" path="descriptor.description" />
-		<acme:form-textarea code="authenticated.job.form.label.descriptor.duties" path="duties" />
+		<acme:form-textarea code="authenticated.job.form.label.descriptor.description" path="descriptor.description" />
 	</acme:form-panel>
-	
 
+	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/authenticated/duty/list?id=${id}')" class="btn btn-primary">
+		<acme:message code="authenticated.job.form.label.descriptorMessage" />
+	</button>
 
-	<acme:form-return code="authenticated.job.form.button.return" />
+	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/authenticated/job/list-active')" class="btn btn-light">
+		<acme:message code="authenticated.job.form.button.return" />
+	</button>
+
 </acme:form>
