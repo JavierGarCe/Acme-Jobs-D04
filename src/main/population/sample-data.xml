@@ -510,7 +510,34 @@
 	<bean name="worker1Authenticated" class="acme.framework.entities.Authenticated">
 		<property name="userAccount" ref="worker1UserAccount" />
 	</bean>
-  
+	
+	<bean name="worker2UserAccount" class="acme.framework.entities.UserAccount">
+  		<property name="username" value="worker2" />
+		<property name="password" value="worker" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Worker" />
+				<property name="surname" value="Two" />
+				<property name="email" value="worker2@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="worker2Worker" />
+				<ref bean="worker2Authenticated" />
+			</list>
+		</property>
+	</bean>
+	<bean name="worker2Worker" class="acme.entities.roles.Worker">
+		<property name="skills" value="Persistence and TeamWork"/>
+		<property name="qualifications" value="Gestión de bases de datos (N3), Seguridad informática (N3)"/>
+		<property name="userAccount" ref="worker2UserAccount" />
+	</bean>
+	
+	<bean name="worker2Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="worker2UserAccount" />
+	</bean>
   <!-- Auditor -->
 	<bean name="auditorUserAccount" class="acme.framework.entities.UserAccount">
 		<property name="username" value="auditor" />
@@ -725,6 +752,40 @@
 		<property name="moreInfo" value="https://www.example.com"/>
 		<property name="descriptor" ref="descriptor05"/>
 		<property name="employer" ref="employer1Employer"/>
+	</bean>
+	
+	<!-- Application -->
+	<bean id="application1" class="acme.entities.applications.Application">
+		<property name="reference" value="EEEE-JJJK:WWWW"/>
+		<property name="moment" value="2019/09/09 10:00"/>
+		<property name="status" value="ACCEPTED"></property>
+		<property name="statement" value="Reforzar la seguridad de la web"/>
+		<property name="skills" value="Security and Determination"/>
+		<property name="qualifications" value="Seguridad Informática (N3)" />
+		<property name="worker" ref="worker1Worker"/>
+		<property name="job" ref="job02"/>
+	</bean>
+	
+	<bean id="application2" class="acme.entities.applications.Application">
+		<property name="reference" value="EEEE-JJJN:WWWX"/>
+		<property name="moment" value="2019/10/09 15:00"/>
+		<property name="status" value="PENDING"></property>
+		<property name="statement" value="Gestionar base de datos"/>
+		<property name="skills" value="Responsability and Determination"/>
+		<property name="qualifications" value="Gestion de Bases de Datos (N3) and Gestion de Equipos Informáticos (N3)" />
+		<property name="worker" ref="worker2Worker"/>
+		<property name="job" ref="job05"/>
+	</bean>
+	
+		<bean id="application3" class="acme.entities.applications.Application">
+		<property name="reference" value="EEEE-JJJM:WWWX"/>
+		<property name="moment" value="2019/11/24 18:00"/>
+		<property name="status" value="REJECTED"></property>
+		<property name="statement" value="Mantenimiento"/>
+		<property name="skills" value="Responsability and Team Work"/>
+		<property name="qualifications" value="Gestion de Equipos Informáticos (N3)" />
+		<property name="worker" ref="worker2Worker"/>
+		<property name="job" ref="job05"/>
 	</bean>
 	
 	
