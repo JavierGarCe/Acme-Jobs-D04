@@ -5,6 +5,7 @@ authenticated.job.form.label.reference = Referencia:
 authenticated.job.form.label.status = Estado:
 authenticated.job.form.label.moreInfo = Más información:
 authenticated.job.form.label.descriptor = Descriptor
+authenticated.job.form.label.employer.name = Nombre del empleador
 authenticated.job.form.label.descriptor.description = Descripción
 authenticated.job.form.label.duty = Tarea
 authenticated.job.form.label.duty.title = Título:
@@ -15,3 +16,5 @@ authenticated.job.form.button.return = Volver
 authenticated.job.list.label.title = Título
 authenticated.job.list.label.salary = Salario
 authenticated.job.list.label.deadline = Fecha límite
+
+authenticated.job.form.label.descriptorMessage = Ver tareas

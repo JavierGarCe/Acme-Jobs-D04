@@ -22,31 +22,17 @@
 	<acme:form-money code="authenticated.job.form.label.salary" path="salary" />
 	<acme:form-moment code="authenticated.job.form.label.deadline" path="deadline" />
 	<acme:form-url code="authenticated.job.form.label.moreInfo" path="moreInfo" />
+	<acme:form-textbox code="authenticated.job.form.label.employer.name" path="employer.userAccount.username" />
+	<acme:form-panel code="authenticated.job.form.label.descriptor">
+		<acme:form-textarea code="authenticated.job.form.label.descriptor.description" path="descriptor.description" />
+	</acme:form-panel>
 
+	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/authenticated/duty/list?id=${id}')" class="btn btn-primary">
+		<acme:message code="authenticated.job.form.label.descriptorMessage" />
+	</button>
 
+	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/authenticated/job/list-active')" class="btn btn-light">
+		<acme:message code="authenticated.job.form.button.return" />
+	</button>
 
-	<b><acme:message code="authenticated.job.form.label.descriptor" /></b>
-	<div class="card border-secondary mb-3 ">
-		<div class="card-body">
-			<acme:form-textbox code="authenticated.job.form.label.descriptor.description" path="descriptor.description" />
-			<jstl:forEach begin="${0}" step="${1}" end="${descriptor.duties.size() - 1}" var="i">
-				<b><acme:message code="authenticated.job.form.label.duty" /></b>
-				<div class="card border-secondary mb-3">
-					<div class="card-body">
-						<acme:form-textbox code="authenticated.job.form.label.duty.title" path="duty${i}.title" />
-						<acme:form-textarea code="authenticated.job.form.label.duty.description" path="duty${i}.description" />
-						<acme:form-double code="authenticated.job.form.label.duty.percentage" path="duty${i}.percentage" />
-					</div>
-				</div>
-			</jstl:forEach>
-		</div>
-	</div>
-
-
-
-
-
-
-
-	<acme:form-return code="authenticated.job.form.button.return" />
 </acme:form>

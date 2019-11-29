@@ -1,13 +1,9 @@
 
 package acme.features.employer.jobs;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.jobs.Duty;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
 import acme.framework.components.Model;
@@ -47,7 +43,7 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "title", "salary", "deadline", "reference", "status", "descriptor", "descriptor.description", "descriptor.duties");
+		request.unbind(entity, model, "title", "salary", "deadline", "reference", "status", "descriptor", "descriptor.description", "employer.userAccount.username");
 
 		switch (entity.getStatus()) {
 		case DRAFT:
@@ -66,14 +62,6 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 			break;
 		}
 
-		List<Duty> duties;
-		duties = new ArrayList<>(entity.getDescriptor().getDuties());
-		for (int i = 0; i < duties.size(); i++) {
-			model.setAttribute("duty" + i + ".title", duties.get(i).getTitle());
-			model.setAttribute("duty" + i + ".description", duties.get(i).getDescription());
-			model.setAttribute("duty" + i + ".percentage", duties.get(i).getPercentage());
-		}
-
 	}
 
 	@Override
@@ -87,8 +75,6 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 		res = this.repository.findOneById(id);
 
 		res.getDescriptor().getDuties().size(); //desenrrollar
-
-		//res.getDescriptor().setDuties(this.repository.findDuties(id));
 
 		return res;
 	}
