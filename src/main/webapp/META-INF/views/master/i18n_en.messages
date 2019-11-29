@@ -70,6 +70,8 @@ master.menu.authenticated.listInvestorRecord = List Investor Records
 master.menu.authenticated.requests.list = List Requests
 master.menu.authenticated.challenge = List Challenges
 master.menu.authenticated.threads = List my threads
+master.menu.authenticated.listActiveJobs = List active jobs
+
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
@@ -111,6 +113,16 @@ master.menu.provider.requests.create = Create Request
 
 master.menu.consumer = Consumer
 master.menu.consumer.createOffer = Create new offer
+
+# master.menu.employer ########################################################
+
+master.menu.employer = Employer
+master.menu.employer.listMineEmployer = List my jobs
+master.menu.employer.listMineApplication = List my applications
+
+# master.menu.worker  ########################################################
+master.menu.worker = Worker
+master.menu.worker.listMineApplication = List my applications
 
 # master.menu.sponsor #########################################################
 

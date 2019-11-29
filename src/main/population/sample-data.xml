@@ -474,7 +474,7 @@
 	<bean name="employer2Employer" class="acme.entities.roles.Employer">
 		<property name="company" value="Employer 2, Inc."/>
 		<property name="sector" value="Sector 2"/>
-		<property name="userAccount" ref="employer1UserAccount" />
+		<property name="userAccount" ref="employer2UserAccount" />
 	</bean>
 	
 	<bean name="employer2Authenticated" class="acme.framework.entities.Authenticated">
@@ -510,7 +510,34 @@
 	<bean name="worker1Authenticated" class="acme.framework.entities.Authenticated">
 		<property name="userAccount" ref="worker1UserAccount" />
 	</bean>
-  
+	
+	<bean name="worker2UserAccount" class="acme.framework.entities.UserAccount">
+  		<property name="username" value="worker2" />
+		<property name="password" value="worker" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Worker" />
+				<property name="surname" value="Two" />
+				<property name="email" value="worker2@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="worker2Worker" />
+				<ref bean="worker2Authenticated" />
+			</list>
+		</property>
+	</bean>
+	<bean name="worker2Worker" class="acme.entities.roles.Worker">
+		<property name="skills" value="Persistence and TeamWork"/>
+		<property name="qualifications" value="Gestión de bases de datos (N3), Seguridad informática (N3)"/>
+		<property name="userAccount" ref="worker2UserAccount" />
+	</bean>
+	
+	<bean name="worker2Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="worker2UserAccount" />
+	</bean>
   <!-- Auditor -->
 	<bean name="auditorUserAccount" class="acme.framework.entities.UserAccount">
 		<property name="username" value="auditor" />
@@ -572,8 +599,196 @@
 		<property name="sponsor" ref="sponsor2Sponsor"/>
 	</bean>
 	
-
-	<!--  Messages -->
+	<!-- Jobs, descriptors and duties -->
+	<bean id="duty01" class="acme.entities.jobs.Duty">
+		<property name="title" value="duty01"/>
+		<property name="description" value="duty01"/>
+		<property name="percentage" value="1"/>
+	</bean>
+	<bean id="duty02" class="acme.entities.jobs.Duty">
+		<property name="title" value="duty02"/>
+		<property name="description" value="duty02"/>
+		<property name="percentage" value="2"/>
+	</bean>
+	<bean id="duty03" class="acme.entities.jobs.Duty">
+		<property name="title" value="duty03"/>
+		<property name="description" value="duty03"/>
+		<property name="percentage" value="3"/>
+	</bean>
+	<bean id="duty04" class="acme.entities.jobs.Duty">
+		<property name="title" value="duty04"/>
+		<property name="description" value="duty04"/>
+		<property name="percentage" value="4"/>
+	</bean>
+	<bean id="duty05" class="acme.entities.jobs.Duty">
+		<property name="title" value="duty05"/>
+		<property name="description" value="duty05"/>
+		<property name="percentage" value="5"/>
+	</bean>
+	<bean id="duty06" class="acme.entities.jobs.Duty">
+		<property name="title" value="duty06"/>
+		<property name="description" value="duty06"/>
+		<property name="percentage" value="6"/>
+	</bean>
+	<bean id="duty07" class="acme.entities.jobs.Duty">
+		<property name="title" value="duty07"/>
+		<property name="description" value="duty07"/>
+		<property name="percentage" value="7"/>
+	</bean>
+	<bean id="duty08" class="acme.entities.jobs.Duty">
+		<property name="title" value="duty08"/>
+		<property name="description" value="duty08"/>
+		<property name="percentage" value="8"/>
+	</bean>
+	<bean id="duty09" class="acme.entities.jobs.Duty">
+		<property name="title" value="duty09"/>
+		<property name="description" value="duty09"/>
+		<property name="percentage" value="9"/>
+	</bean>
+	<bean id="duty10" class="acme.entities.jobs.Duty">
+		<property name="title" value="duty10"/>
+		<property name="description" value="duty10"/>
+		<property name="percentage" value="10"/>
+	</bean>
+	
+	<bean id="descriptor01" class="acme.entities.jobs.Descriptor">
+		<property name="description" value="descriptor01"/>
+		<property name="duties">
+			<list>
+				<ref bean="duty01"/>
+				<ref bean="duty02"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="descriptor02" class="acme.entities.jobs.Descriptor">
+		<property name="description" value="descriptor02"/>
+		<property name="duties">
+			<list>
+				<ref bean="duty03"/>
+				<ref bean="duty04"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="descriptor03" class="acme.entities.jobs.Descriptor">
+		<property name="description" value="descriptor03"/>
+		<property name="duties">
+			<list>
+				<ref bean="duty05"/>
+				<ref bean="duty06"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="descriptor04" class="acme.entities.jobs.Descriptor">
+		<property name="description" value="descriptor04"/>
+		<property name="duties">
+			<list>
+				<ref bean="duty07"/>
+				<ref bean="duty08"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="descriptor05" class="acme.entities.jobs.Descriptor">
+		<property name="description" value="descriptor05"/>
+		<property name="duties">
+			<list>
+				<ref bean="duty09"/>
+				<ref bean="duty10"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="job01" class="acme.entities.jobs.Job">
+		<property name="reference" value="EEEE-JJJJ"/>
+		<property name="status" value="DRAFT"/>
+		<property name="title" value="job01"/>
+		<property name="deadline" value="2020/11/23 10:00"/>
+		<property name="salary" value="100 EUR"/>
+		<property name="moreInfo" value="https://www.example.com"/>
+		<property name="descriptor" ref="descriptor01"/>
+		<property name="employer" ref="employer1Employer"/>
+	</bean>
+	
+	<bean id="job02" class="acme.entities.jobs.Job">
+		<property name="reference" value="EEEE-JJJK"/>
+		<property name="status" value="PUBLISHED"/>
+		<property name="title" value="job02"/>
+		<property name="deadline" value="2019/11/23 10:00"/>
+		<property name="salary" value="200 EUR"/>
+		<property name="descriptor" ref="descriptor02"/>
+		<property name="employer" ref="employer2Employer"/>
+	</bean>
+	
+	<bean id="job03" class="acme.entities.jobs.Job">
+		<property name="reference" value="EEEE-JJJL"/>
+		<property name="status" value="DRAFT"/>
+		<property name="title" value="job03"/>
+		<property name="deadline" value="2020/05/07 10:00"/>
+		<property name="salary" value="300 EUR"/>
+		<property name="moreInfo" value="https://www.example.com"/>
+		<property name="descriptor" ref="descriptor03"/>
+		<property name="employer" ref="employer1Employer"/>
+	</bean>
+	
+	<bean id="job04" class="acme.entities.jobs.Job">
+		<property name="reference" value="EEEE-JJJM"/>
+		<property name="status" value="PUBLISHED"/>
+		<property name="title" value="job04"/>
+		<property name="deadline" value="2010/11/23 10:00"/>
+		<property name="salary" value="100 EUR"/>
+		<property name="descriptor" ref="descriptor04"/>
+		<property name="employer" ref="employer2Employer"/>
+	</bean>
+	
+	<bean id="job05" class="acme.entities.jobs.Job">
+		<property name="reference" value="EEEE-JJJN"/>
+		<property name="status" value="PUBLISHED"/>
+		<property name="title" value="job05"/>
+		<property name="deadline" value="2024/11/23 10:00"/>
+		<property name="salary" value="100 EUR"/>
+		<property name="moreInfo" value="https://www.example.com"/>
+		<property name="descriptor" ref="descriptor05"/>
+		<property name="employer" ref="employer1Employer"/>
+	</bean>
+	
+	<!-- Application -->
+	<bean id="application1" class="acme.entities.applications.Application">
+		<property name="reference" value="EEEE-JJJK:WWWW"/>
+		<property name="moment" value="2019/09/09 10:00"/>
+		<property name="status" value="ACCEPTED"></property>
+		<property name="statement" value="Reforzar la seguridad de la web"/>
+		<property name="skills" value="Security and Determination"/>
+		<property name="qualifications" value="Seguridad Informática (N3)" />
+		<property name="worker" ref="worker1Worker"/>
+		<property name="job" ref="job02"/>
+	</bean>
+	
+	<bean id="application2" class="acme.entities.applications.Application">
+		<property name="reference" value="EEEE-JJJN:WWWX"/>
+		<property name="moment" value="2019/10/09 15:00"/>
+		<property name="status" value="PENDING"></property>
+		<property name="statement" value="Gestionar base de datos"/>
+		<property name="skills" value="Responsability and Determination"/>
+		<property name="qualifications" value="Gestion de Bases de Datos (N3) and Gestion de Equipos Informáticos (N3)" />
+		<property name="worker" ref="worker2Worker"/>
+		<property name="job" ref="job05"/>
+	</bean>
+	
+		<bean id="application3" class="acme.entities.applications.Application">
+		<property name="reference" value="EEEE-JJJM:WWWX"/>
+		<property name="moment" value="2019/11/24 18:00"/>
+		<property name="status" value="REJECTED"></property>
+		<property name="statement" value="Mantenimiento"/>
+		<property name="skills" value="Responsability and Team Work"/>
+		<property name="qualifications" value="Gestion de Equipos Informáticos (N3)" />
+		<property name="worker" ref="worker2Worker"/>
+		<property name="job" ref="job05"/>
+	</bean>
+	
+  <!--  Messages -->
 	
 	<bean id="message1" class="acme.entities.messages.Message">
 		<property name="title" value="Message 1"/>
