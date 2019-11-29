@@ -17,3 +17,5 @@ employer.job.form.button.return = Volver
 employer.job.list.label.title = Título
 employer.job.list.label.salary = Salario
 employer.job.list.label.deadline = Fecha límite
+
+master.menu.employer.listAuditRecords = link para el registro de auditorias del trabajo

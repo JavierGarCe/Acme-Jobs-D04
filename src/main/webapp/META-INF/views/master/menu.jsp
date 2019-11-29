@@ -123,6 +123,11 @@
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
 			<acme:menu-suboption code="master.menu.sponsor.listMineCommercialBanners" action="/sponsor/commercial-banner/list-mine" />
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
+			<acme:menu-suboption code="master.menu.sponsor.listMineJobs" action="/auditor/job/list-mine" />
+			<acme:menu-suboption code="master.menu.sponsor.listOthers" action="/auditor/job/list-others" />
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.worker" access="hasRole('Worker')">
 			<acme:menu-suboption code="master.menu.worker.listMineApplication" action="/worker/application/list-mine" />

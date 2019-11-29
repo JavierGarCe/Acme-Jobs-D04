@@ -128,6 +128,12 @@ master.menu.worker.listMineApplication = Lista de mis aplicaciones
 master.menu.sponsor = Sponsor
 master.menu.sponsor.listMineCommercialBanners = Listar mis banners comerciales
 
+# master.menu.auditor #########################################################
+
+master.menu.auditor = Auditor
+master.menu.sponsor.listMineJobs = Listar trabajos por los que he escrito
+master.menu.sponsor.listOthers = Listar el resto
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta

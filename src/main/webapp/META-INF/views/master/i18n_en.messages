@@ -129,6 +129,12 @@ master.menu.worker.listMineApplication = List my applications
 master.menu.sponsor = Sponsor
 master.menu.sponsor.listMineCommercialBanners = List my commercial banners
 
+# master.menu.auditor #########################################################
+
+master.menu.auditor = Auditor
+master.menu.sponsor.listMineJobs = List jobs for which i have written
+master.menu.sponsor.listOthers = List others jobs
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account

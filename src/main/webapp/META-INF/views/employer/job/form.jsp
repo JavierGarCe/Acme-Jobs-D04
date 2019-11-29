@@ -27,6 +27,8 @@
 		<acme:form-textarea code="employer.job.form.label.descriptor.description" path="descriptor.description" />
 	</acme:form-panel>
 
+<acme:menu-suboption code="master.menu.employer.listAuditRecords" action="/employer/auditRecord/list-mine?id=${param.id}" />
+	<acme:form-return code="employer.job.form.button.return" />
 	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/employer/duty/list?id=${id}')" class="btn btn-primary">
 		<acme:message code="employer.job.form.label.descriptorMessage" />
 	</button>
