@@ -657,7 +657,7 @@ Sponsor
     <coordinates>
       <x>1984</x>
       <y>368</y>
-      <w>112</w>
+      <w>120</w>
       <h>136</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
@@ -850,30 +850,30 @@ Application
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1152</x>
-      <y>424</y>
+      <x>1160</x>
+      <y>440</y>
       <w>64</w>
-      <h>112</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
 m1=0..*
 m2=1
 does v</panel_attributes>
-    <additional_attributes>10.0;120.0;20.0;10.0</additional_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1376</x>
-      <y>528</y>
-      <w>152</w>
-      <h>64</h>
+      <x>1384</x>
+      <y>480</y>
+      <w>136</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=x-&gt;
 m1=0..*
 m2=1
 have v</panel_attributes>
-    <additional_attributes>10.0;60.0;170.0;10.0</additional_attributes>
+    <additional_attributes>10.0;120.0;150.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
