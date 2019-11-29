@@ -60,7 +60,8 @@
 			<acme:menu-suboption code="master.menu.authenticated.listInvestorRecord" action="/authenticated/investor-record/list" />
 			<acme:menu-suboption code="master.menu.authenticated.requests.list" action="/authenticated/requests/list" />
 			<acme:menu-suboption code="master.menu.authenticated.challenge" action="/authenticated/challenge/list" />
-			<acme:menu-separator/>
+    <acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.threads" action="/authenticated/thread/list-mine" />
 			<acme:menu-suboption code="master.menu.authenticated.listActiveJobs" action="/authenticated/job/list-active"/>
 		</acme:menu-option>
 
@@ -115,6 +116,8 @@
 		
 		<acme:menu-option code="master.menu.employer" access="hasRole('Employer')">
 			<acme:menu-suboption code="master.menu.employer.listMineEmployer" action="/employer/job/list-mine" />
+			<acme:menu-suboption code="master.menu.employer.listMineApplication" action="/employer/application/list-mine" />
+			
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.sponsor" access="hasRole('Sponsor')">
@@ -124,6 +127,11 @@
 		<acme:menu-option code="master.menu.auditor" access="hasRole('Auditor')">
 			<acme:menu-suboption code="master.menu.sponsor.listMineJobs" action="/auditor/job/list-mine" />
 			<acme:menu-suboption code="master.menu.sponsor.listOthers" action="/auditor/job/list-others" />
+		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.worker" access="hasRole('Worker')">
+			<acme:menu-suboption code="master.menu.worker.listMineApplication" action="/worker/application/list-mine" />
+
 		</acme:menu-option>
 
 

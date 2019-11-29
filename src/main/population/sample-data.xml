@@ -510,7 +510,34 @@
 	<bean name="worker1Authenticated" class="acme.framework.entities.Authenticated">
 		<property name="userAccount" ref="worker1UserAccount" />
 	</bean>
-  
+	
+	<bean name="worker2UserAccount" class="acme.framework.entities.UserAccount">
+  		<property name="username" value="worker2" />
+		<property name="password" value="worker" />
+		<property name="enabled" value="true" />
+		<property name="identity">
+			<bean class="acme.datatypes.UserIdentity">
+				<property name="name" value="Worker" />
+				<property name="surname" value="Two" />
+				<property name="email" value="worker2@acme.com" />
+			</bean>
+		</property>
+		<property name="roles">
+			<list>
+				<ref bean="worker2Worker" />
+				<ref bean="worker2Authenticated" />
+			</list>
+		</property>
+	</bean>
+	<bean name="worker2Worker" class="acme.entities.roles.Worker">
+		<property name="skills" value="Persistence and TeamWork"/>
+		<property name="qualifications" value="Gestión de bases de datos (N3), Seguridad informática (N3)"/>
+		<property name="userAccount" ref="worker2UserAccount" />
+	</bean>
+	
+	<bean name="worker2Authenticated" class="acme.framework.entities.Authenticated">
+		<property name="userAccount" ref="worker2UserAccount" />
+	</bean>
   <!-- Auditor -->
 	<bean name="auditorUserAccount" class="acme.framework.entities.UserAccount">
 		<property name="username" value="auditor" />
@@ -803,5 +830,140 @@
 		<property name="job" ref="job04"/>
 	</bean>		
 	
+	<!-- Application -->
+	<bean id="application1" class="acme.entities.applications.Application">
+		<property name="reference" value="EEEE-JJJK:WWWW"/>
+		<property name="moment" value="2019/09/09 10:00"/>
+		<property name="status" value="ACCEPTED"></property>
+		<property name="statement" value="Reforzar la seguridad de la web"/>
+		<property name="skills" value="Security and Determination"/>
+		<property name="qualifications" value="Seguridad Informática (N3)" />
+		<property name="worker" ref="worker1Worker"/>
+		<property name="job" ref="job02"/>
+	</bean>
+	
+	<bean id="application2" class="acme.entities.applications.Application">
+		<property name="reference" value="EEEE-JJJN:WWWX"/>
+		<property name="moment" value="2019/10/09 15:00"/>
+		<property name="status" value="PENDING"></property>
+		<property name="statement" value="Gestionar base de datos"/>
+		<property name="skills" value="Responsability and Determination"/>
+		<property name="qualifications" value="Gestion de Bases de Datos (N3) and Gestion de Equipos Informáticos (N3)" />
+		<property name="worker" ref="worker2Worker"/>
+		<property name="job" ref="job05"/>
+	</bean>
+	
+		<bean id="application3" class="acme.entities.applications.Application">
+		<property name="reference" value="EEEE-JJJM:WWWX"/>
+		<property name="moment" value="2019/11/24 18:00"/>
+		<property name="status" value="REJECTED"></property>
+		<property name="statement" value="Mantenimiento"/>
+		<property name="skills" value="Responsability and Team Work"/>
+		<property name="qualifications" value="Gestion de Equipos Informáticos (N3)" />
+		<property name="worker" ref="worker2Worker"/>
+		<property name="job" ref="job05"/>
+	</bean>
+	
+  <!--  Messages -->
+	
+	<bean id="message1" class="acme.entities.messages.Message">
+		<property name="title" value="Message 1"/>
+		<property name="moment" value="2018/01/12 07:00"/>
+		<property name="tags" value="Tag1,Tag2"/>
+		<property name="body" value="Message 1"/>
+		<property name="authenticated" ref="employer1Authenticated"/>
+	</bean>
+	
+	<bean id="message2" class="acme.entities.messages.Message">
+		<property name="title" value="Message 2"/>
+		<property name="moment" value="2018/01/12 08:00"/>
+		<property name="tags" value="Tag1,Tag2"/>
+		<property name="body" value="Message 2"/>
+		<property name="authenticated" ref="employer1Authenticated"/>
+	</bean>
+	
+	<bean id="message3" class="acme.entities.messages.Message">
+		<property name="title" value="Message 3"/>
+		<property name="moment" value="2018/01/12 12:00"/>
+		<property name="tags" value="Tag1,Tag2"/>
+		<property name="body" value="Message 3"/>
+		<property name="authenticated" ref="worker1Authenticated"/>
+	</bean>
+	
+	<bean id="message4" class="acme.entities.messages.Message">
+		<property name="title" value="Message 4"/>
+		<property name="moment" value="2018/02/12 08:30"/>
+		<property name="tags" value="Tag1,Tag2"/>
+		<property name="body" value="Message 4"/>
+		<property name="authenticated" ref="worker1Authenticated"/>
+	</bean>
+	
+	<bean id="message5" class="acme.entities.messages.Message">
+		<property name="title" value="Message 5"/>
+		<property name="moment" value="2018/05/12 12:00"/>
+		<property name="tags" value="Tag1,Tag2"/>
+		<property name="body" value="Message 5"/>
+		<property name="authenticated" ref="auditorAuthenticated"/>
+	</bean>
+	
+	<bean id="message6" class="acme.entities.messages.Message">
+		<property name="title" value="Message 6"/>
+		<property name="moment" value="2018/04/15 13:30"/>
+		<property name="tags" value="Tag1,Tag2"/>
+		<property name="body" value="Message 6"/>
+		<property name="authenticated" ref="sponsor1Authenticated"/>
+	</bean>
+	
+	<!--  Thread -->
+	
+	<bean id="thread1" class="acme.entities.threads.Thread">
+		<property name="title" value="Thread 1"/>
+		<property name="moment" value="2018/01/12 07:00"/>
+		<property name="messages">
+			<list>
+				<ref bean="message1" />
+			</list>
+		</property>
+		<property name="authenticateds">
+			<list>
+				<ref bean="employer1Authenticated" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="thread2" class="acme.entities.threads.Thread">
+		<property name="title" value="Thread 2"/>
+		<property name="moment" value="2018/02/12 07:00"/>
+		<property name="messages">
+			<list>
+				<ref bean="message2" />
+				<ref bean="message3" />
+				<ref bean="message4" />
+				<ref bean="message5" />
+			</list>
+		</property>
+		<property name="authenticateds">
+			<list>
+				<ref bean="employer1Authenticated" />
+				<ref bean="worker1Authenticated" />
+				<ref bean="auditorAuthenticated" /> 
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="thread3" class="acme.entities.threads.Thread">
+		<property name="title" value="Thread 3"/>
+		<property name="moment" value="2018/04/13 07:00"/>
+		<property name="messages">
+			<list>
+				<ref bean="message6" />
+			</list>
+		</property>
+		<property name="authenticateds">
+			<list>
+				<ref bean="sponsor1Authenticated" />
+			</list>
+		</property>
+	</bean>
 	
 </beans>

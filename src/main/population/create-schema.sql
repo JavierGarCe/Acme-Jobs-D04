@@ -1,5 +1,4 @@
-
-    create table `administrator` (
+create table `administrator` (
        `id` integer not null,
         `version` integer not null,
         `user_account_id` integer,
@@ -23,15 +22,17 @@
         primary key (`id`)
     ) engine=InnoDB;
 
-    create table `audit_record` (
+    create table `application` (
        `id` integer not null,
         `version` integer not null,
-        `body` varchar(255),
         `moment` datetime(6),
+        `qualifications` varchar(255),
+        `reference` varchar(255),
+        `skills` varchar(255),
+        `statement` varchar(255),
         `status` integer,
-        `title` varchar(255),
-        `auditor_id` integer not null,
         `job_id` integer not null,
+        `worker_id` integer not null,
         primary key (`id`)
     ) engine=InnoDB;
 
@@ -309,6 +310,9 @@
         primary key (`id`)
     ) engine=InnoDB;
 create index IDXnhikaa2dj3la6o2o7e9vo01y0 on `announcement` (`moment`);
+
+    alter table `application` 
+       add constraint UK_ct7r18vvxl5g4c4k7aefpa4do unique (`reference`);
 create index IDXnr284tes3x8hnd3h716tmb3fr on `challenge` (`deadline`);
 create index IDX9pkce3d1y6w47wadap5s5xptc on `company_record` (`stars`);
 
@@ -346,15 +350,15 @@ create index IDX2ijmvvrwi2t1isu2m2ncm5qn1 on `requests` (`ticker`);
        foreign key (`user_account_id`) 
        references `user_account` (`id`);
 
-    alter table `audit_record` 
-       add constraint `FKdcrrgv6rkfw2ruvdja56un4ji` 
-       foreign key (`auditor_id`) 
-       references `auditor` (`id`);
-
-    alter table `audit_record` 
-       add constraint `FKlbvbyimxf6pxvbhkdd4vfhlnd` 
+    alter table `application` 
+       add constraint `FKoa6p4s2oyy7tf80xwc4r04vh6` 
        foreign key (`job_id`) 
        references `job` (`id`);
+
+    alter table `application` 
+       add constraint `FKmbjdoxi3o93agxosoate4sxbt` 
+       foreign key (`worker_id`) 
+       references `worker` (`id`);
 
     alter table `auditor` 
        add constraint FK_clqcq9lyspxdxcp6o4f3vkelj 
