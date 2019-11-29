@@ -10,8 +10,5 @@
 	redirect('/authenticated/message/list?id=${id}')" class="btn btn-primary">
 	<acme:message code="authenticated.threads.form.label.message"/>
 	</button>				
-	<button type="button" class="btn btn-default" 
-	onclick="javascript: clearReturnUrl(); redirect('/authenticated/thread/list-mine')">
-	<acme:message code="authenticated.threads.form.button.return"/>
-	</button>
+	<acme:form-return code="authenticated.threads.form.button.return"/>
 </acme:form>
