@@ -9,6 +9,5 @@
 	<acme:list-column code="auditor.auditRecord.list.label.status" path="status" width="40%"/>
 	<acme:form-return code="auditor.auditRecord.form.button.return"/>
 </acme:list>
-	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/auditor/job/show?id=${param.id}')" class="btn btn-primary">
-		<acme:message code="auditor.auditRecord.form.button.return" />
-	</button>
+<acme:form-return code="auditor.auditRecord.form.button.return"/>
+	

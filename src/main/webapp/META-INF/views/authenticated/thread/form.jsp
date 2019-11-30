@@ -10,5 +10,5 @@
 	redirect('/authenticated/message/list?id=${id}')" class="btn btn-primary">
 	<acme:message code="authenticated.threads.form.label.message"/>
 	</button>				
-	<acme:form-return code="authenticated.threads.form.button.return" action="list-mine"/>
+	<acme:form-return code="authenticated.threads.form.button.return" />
 </acme:form>

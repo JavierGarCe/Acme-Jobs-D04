@@ -27,11 +27,11 @@
 
 	</acme:form-panel>
 		
-	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/auditor/auditRecord/list-mine?id=${param.id}')" class="btn btn-primary">
+	<button type="button" onclick="javascript: pushReturnUrl('/auditor/job/show?id=${id}'); redirect('/auditor/auditRecord/list-mine?id=${param.id}')" class="btn btn-primary">
 		<acme:message code="master.menu.anonymous.listAuditRecords" />
 	</button>
 	
-	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/auditor/duty/list?id=${id}')" class="btn btn-primary">
+	<button type="button" onclick="javascript: pushReturnUrl('/auditor/job/show?id=${id}'); redirect('/auditor/duty/list?id=${id}')" class="btn btn-primary">
 		<acme:message code="employer.job.form.label.descriptorMessage" />
 	</button>
 	

@@ -27,11 +27,11 @@
 		<acme:form-textarea code="employer.job.form.label.descriptor.description" path="descriptor.description" />
 	</acme:form-panel>
 
-	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/employer/auditRecord/list-mine?id=${param.id}')" class="btn btn-primary">
+	<button type="button" onclick="javascript: pushReturnUrl('/employer/job/show?id=${id}'); redirect('/employer/auditRecord/list-mine?id=${param.id}')" class="btn btn-primary">
 		<acme:message code="master.menu.employer.listAuditRecords" />
 	</button>
 
-	<button type="button" onclick="javascript: clearReturnUrl(); redirect('/employer/duty/list?id=${id}')" class="btn btn-primary">
+	<button type="button" onclick="javascript: pushReturnUrl('/employer/job/show?id=${id}'); redirect('/employer/duty/list?id=${id}')" class="btn btn-primary">
 		<acme:message code="employer.job.form.label.descriptorMessage" />
 	</button>
 
