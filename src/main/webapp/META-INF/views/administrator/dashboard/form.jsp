@@ -16,6 +16,9 @@
 		<acme:form-double code="administrator.dashboard.form.label.avgActiveOffers" path="avgActiveOffers"/>
 		<acme:form-double code="administrator.dashboard.form.label.stDevMaxActiveOffers" path="stDevMaxActiveOffers"/>
 		<acme:form-double code="administrator.dashboard.form.label.stDevMinActiveOffers" path="stDevMinActiveOffers"/>
-
+		<acme:form-double code="administrator.dashboard.form.label.avgNumberOfJobsPerEmployer" path="avgNumberOfJobsPerEmployer"/>
+		<acme:form-double code="administrator.dashboard.form.label.avgNumberOfApplicationsPerEmployer" path="avgNumberOfApplicationsPerEmployer"/>
+		<acme:form-double code="administrator.dashboard.form.label.avgNumberOfApplicationsPerWorker" path="avgNumberOfApplicationsPerWorker"/>
+		
 	<acme:form-return code="administrator.dashboard.form.button.return"/>
 </acme:form>

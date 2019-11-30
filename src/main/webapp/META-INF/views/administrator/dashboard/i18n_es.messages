@@ -10,5 +10,9 @@ administrator.dashboard.form.label.maxActiveOffers = Máxima oferta activa:
 administrator.dashboard.form.label.avgActiveOffers = Media ofertas activas:
 administrator.dashboard.form.label.stDevMaxActiveOffers = Desviación estándar máxima recompesnsa ofertas activas:
 administrator.dashboard.form.label.stDevMinActiveOffers = Desviación estándar mínima recompesnsa ofertas activas:
+administrator.dashboard.form.label.avgNumberOfJobsPerEmployer = Media de trabajos por empleador:
+administrator.dashboard.form.label.avgNumberOfApplicationsPerEmployer = Media de aplicaciones por empleador:
+administrator.dashboard.form.label.avgNumberOfApplicationsPerWorker = Media de aplicaciones por trabajador:
+
 
 administrator.dashboard.form.button.return = Volver

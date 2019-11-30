@@ -32,7 +32,7 @@ public class AdministratorChartShowService implements AbstractShowService<Admini
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "companiesBySector", "investorsBySector");
+		request.unbind(entity, model, "companiesBySector", "investorsBySector", "jobsByStatusRatio", "applicationsByStatusRatio");
 
 	}
 
@@ -43,6 +43,8 @@ public class AdministratorChartShowService implements AbstractShowService<Admini
 		Chart res = new Chart();
 		res.setCompaniesBySector(this.repository.companiesBySector());
 		res.setInvestorsBySector(this.repository.investorsBySector());
+		res.setJobsByStatusRatio(this.repository.jobsByStatusRatio());
+		res.setApplicationsByStatusRatio(this.repository.applicationsByStatusRatio());
 		return res;
 
 	}

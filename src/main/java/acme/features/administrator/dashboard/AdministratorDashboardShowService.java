@@ -30,7 +30,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert model != null;
 
 		request.unbind(entity, model, "numberOfAnnoucements", "numberOfCompanyRecords", "numberOfInvestorRecords", "minActiveRequests", "maxActiveRequests", "avgActiveRequests", "stDevRActiveRequests", "minActiveOffers", "maxActiveOffers",
-			"avgActiveOffers", "stDevMaxActiveOffers", "stDevMinActiveOffers");
+			"avgActiveOffers", "stDevMaxActiveOffers", "stDevMinActiveOffers", "avgNumberOfJobsPerEmployer", "avgNumberOfApplicationsPerEmployer", "avgNumberOfApplicationsPerWorker");
 
 	}
 
@@ -51,6 +51,9 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		Double avgActiveOffers = .0;
 		Double stDevMaxActiveOffers = .0;
 		Double stDevMinActiveOffers = .0;
+		Double averageNumberOfJobsPerEmployer = .0;
+		Double averageNumberOfApplicationsPerEmployer = .0;
+		Double averageNumberOfApplicationsPerWorker = .0;
 
 		Integer numberOfAnnoucements = this.repository.numberOfAnnouncements();
 		Integer numberOfCompanyRecords = this.repository.numCompanyRecord();
@@ -73,6 +76,14 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 			stDevRActiveRequests = this.repository.stDevActiveRequests();
 		}
 
+		if (this.repository.numJobs() != 0) {
+			averageNumberOfJobsPerEmployer = this.repository.averageNumberOfJobsPerEmployer();
+		}
+
+		if (this.repository.numApplications() != 0) {
+			averageNumberOfApplicationsPerEmployer = this.repository.averageNumberOfApplicationsPerEmployer();
+			averageNumberOfApplicationsPerWorker = this.repository.averageNumberOfApplicationsPerWorker();
+		}
 		result = new Dashboard();
 
 		result.setNumberOfAnnoucements(numberOfAnnoucements);
@@ -87,6 +98,9 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setAvgActiveOffers(avgActiveOffers);
 		result.setStDevMinActiveOffers(stDevMinActiveOffers);
 		result.setStDevMaxActiveOffers(stDevMaxActiveOffers);
+		result.setAvgNumberOfJobsPerEmployer(averageNumberOfJobsPerEmployer);
+		result.setAvgNumberOfApplicationsPerEmployer(averageNumberOfApplicationsPerEmployer);
+		result.setAvgNumberOfApplicationsPerWorker(averageNumberOfApplicationsPerWorker);
 
 		return result;
 	}
