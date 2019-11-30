@@ -726,7 +726,7 @@ Employer
 Job
 --
 +reference :String{Unique, NotBlank, Length(min=5,max=10)}
-+status :JobStatus
++status :Status
 +title :String{NotBlank}
 +deadline :Date{Temporal(TIMESTAMP)}
 +salary :Money
@@ -743,7 +743,7 @@ Job
       <h>72</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
-JobStatus
+Status
 --
 + DARFT
 + PUBLISHED
@@ -1015,7 +1015,7 @@ AuditRecord
 --
 +title: String{NotBlank}
 +moment: Date (Temporal(TIMESTAMP)), Past)
-+status : Estado{NotBlank}
++status : Status{NotBlank}
 +body: String{NotBlank}</panel_attributes>
     <additional_attributes/>
   </element>

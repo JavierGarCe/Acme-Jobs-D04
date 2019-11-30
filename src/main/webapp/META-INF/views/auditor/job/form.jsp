@@ -17,7 +17,7 @@
 
 <acme:form readonly="true">
 	<acme:form-textbox code="auditor.job.form.label.title" path="title" />
-	<acme:form-textbox code="auditor.job.form.label.reference" path="reference" />
+	<acme:form-textbox code="auditor.job.form.label.reference" path="reference" placeholder="EEEE-JJJJ"/>
 	<acme:form-textbox code="auditor.job.form.label.status" path="status" />
 	<acme:form-money code="auditor.job.form.label.salary" path="salary" />
 	<acme:form-moment code="auditor.job.form.label.deadline" path="deadline" />

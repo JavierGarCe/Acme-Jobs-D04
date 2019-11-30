@@ -17,7 +17,7 @@
 
 <acme:form readonly="true">
 	<acme:form-textbox code="authenticated.job.form.label.title" path="title" />
-	<acme:form-textbox code="authenticated.job.form.label.reference" path="reference" />
+	<acme:form-textbox code="authenticated.job.form.label.reference" path="reference" placeholder="EEEE-JJJJ"/>
 	<acme:form-textbox code="authenticated.job.form.label.status" path="status" />
 	<acme:form-money code="authenticated.job.form.label.salary" path="salary" />
 	<acme:form-moment code="authenticated.job.form.label.deadline" path="deadline" />
@@ -35,7 +35,7 @@
 		<acme:message code="authenticated.job.form.label.descriptorMessage" />
 	</button>
 
-	<acme:form-return code="authenticated.job.form.button.return" />
+	<acme:form-return code="authenticated.job.form.button.return" action="list-active"/>
 
 
 </acme:form>
