@@ -11,6 +11,8 @@ authenticated.job.form.label.duty = Tarea
 authenticated.job.form.label.duty.title = Título:
 authenticated.job.form.label.duty.description = Descripción:
 authenticated.job.form.label.duty.percentage = Porcentaje: 
+authenticated.job.form.label.status.published = Publicado
+authenticated.job.form.label.status.draft = Borrador
 authenticated.job.form.button.return = Volver
 
 authenticated.job.list.label.title = Título

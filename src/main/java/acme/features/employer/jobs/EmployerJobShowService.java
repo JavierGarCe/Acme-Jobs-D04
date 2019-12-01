@@ -45,23 +45,6 @@ public class EmployerJobShowService implements AbstractShowService<Employer, Job
 
 		request.unbind(entity, model, "title", "salary", "deadline", "reference", "status", "descriptor", "descriptor.description", "employer.userAccount.username");
 
-		switch (entity.getStatus()) {
-		case DRAFT:
-			if (request.getLocale().getDisplayLanguage() == "English") {
-				model.setAttribute("status", "Draft");
-			} else {
-				model.setAttribute("status", "Borrador");
-			}
-			break;
-		default:
-			if (request.getLocale().getDisplayLanguage() == "English") {
-				model.setAttribute("status", "Published");
-			} else {
-				model.setAttribute("status", "Publicado");
-			}
-			break;
-		}
-
 	}
 
 	@Override

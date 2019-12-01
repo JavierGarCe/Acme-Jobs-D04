@@ -1,9 +1,13 @@
 
 package acme.features.authenticated.job;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.Status;
 import acme.entities.jobs.Job;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
@@ -20,8 +24,32 @@ public class AuthenticatedJobShowService implements AbstractShowService<Authenti
 	@Override
 	public boolean authorise(final Request<Job> request) {
 		assert request != null;
+		int jobId;
+		Job job;
+		Status status;
+		Date deadline;
+		Boolean res = true;
 
-		return true;
+		jobId = request.getModel().getInteger("id");
+
+		job = this.repository.findOneById(jobId);
+
+		status = job.getStatus();
+		deadline = job.getDeadline();
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+		Date nowDate = new Date(System.currentTimeMillis());
+		formatter.format(nowDate);
+
+		if (!status.equals(Status.PUBLISHED)) {
+			res = false;
+		}
+
+		if (nowDate.compareTo(deadline) > 0) {
+			res = false;
+		}
+
+		return res;
 	}
 
 	@Override
@@ -31,23 +59,6 @@ public class AuthenticatedJobShowService implements AbstractShowService<Authenti
 		assert model != null;
 
 		request.unbind(entity, model, "title", "salary", "deadline", "reference", "status", "descriptor", "descriptor.description", "employer.userAccount.username");
-
-		switch (entity.getStatus()) {
-		case DRAFT:
-			if (request.getLocale().getDisplayLanguage() == "English") {
-				model.setAttribute("status", "Draft");
-			} else {
-				model.setAttribute("status", "Borrador");
-			}
-			break;
-		default:
-			if (request.getLocale().getDisplayLanguage() == "English") {
-				model.setAttribute("status", "Published");
-			} else {
-				model.setAttribute("status", "Publicado");
-			}
-			break;
-		}
 
 	}
 

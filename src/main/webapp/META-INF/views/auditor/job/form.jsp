@@ -18,7 +18,18 @@
 <acme:form readonly="true">
 	<acme:form-textbox code="auditor.job.form.label.title" path="title" />
 	<acme:form-textbox code="auditor.job.form.label.reference" path="reference" placeholder="EEEE-JJJJ"/>
-	<acme:form-textbox code="auditor.job.form.label.status" path="status" />
+	<acme:form-select code="auditor.job.form.label.status" path="status" >
+		<jstl:choose>
+			<jstl:when test="${status == 'PUBLISHED' }"> <jstl:set var="publishedSelected" value="true"/> </jstl:when>
+			<jstl:otherwise><jstl:set var="publishedSelected" value="false"/></jstl:otherwise>
+		</jstl:choose>
+		<jstl:choose>
+			<jstl:when test="${status == 'DRAFT' }"> <jstl:set var="draftSelected" value="true"/> </jstl:when>
+			<jstl:otherwise><jstl:set var="draftSelected" value="false"/></jstl:otherwise>
+		</jstl:choose>
+		<acme:form-option code="auditor.job.form.label.status.published" value="PUBLISHED"  selected="${publishedSelected}" />
+		<acme:form-option code="auditor.job.form.label.status.draft" value="DRAFT" selected="${draftSelected}" />
+	</acme:form-select>
 	<acme:form-money code="auditor.job.form.label.salary" path="salary" />
 	<acme:form-moment code="auditor.job.form.label.deadline" path="deadline" />
 	<acme:form-url code="auditor.job.form.label.moreInfo" path="moreInfo" />

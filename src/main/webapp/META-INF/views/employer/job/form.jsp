@@ -18,7 +18,18 @@
 <acme:form readonly="true">
 	<acme:form-textbox code="employer.job.form.label.title" path="title" />
 	<acme:form-textbox code="employer.job.form.label.reference" path="reference" placeholder="EEEE-JJJJ"/>
-	<acme:form-textbox code="employer.job.form.label.status" path="status" />
+	<acme:form-select code="employer.job.form.label.status" path="status" >
+		<jstl:choose>
+			<jstl:when test="${status == 'PUBLISHED' }"> <jstl:set var="publishedSelected" value="true"/> </jstl:when>
+			<jstl:otherwise><jstl:set var="publishedSelected" value="false"/></jstl:otherwise>
+		</jstl:choose>
+		<jstl:choose>
+			<jstl:when test="${status == 'DRAFT' }"> <jstl:set var="draftSelected" value="true"/> </jstl:when>
+			<jstl:otherwise><jstl:set var="draftSelected" value="false"/></jstl:otherwise>
+		</jstl:choose>
+		<acme:form-option code="employer.job.form.label.status.published" value="PUBLISHED"  selected="${publishedSelected}" />
+		<acme:form-option code="employer.job.form.label.status.draft" value="DRAFT" selected="${draftSelected}" />
+	</acme:form-select>
 	<acme:form-money code="employer.job.form.label.salary" path="salary" />
 	<acme:form-moment code="employer.job.form.label.deadline" path="deadline" />
 	<acme:form-url code="employer.job.form.label.moreInfo" path="moreInfo" />
@@ -35,7 +46,7 @@
 		<acme:message code="employer.job.form.label.descriptorMessage" />
 	</button>
 
-	<acme:form-return code="employer.job.form.button.return" action="list-mine"/>
+	<acme:form-return code="employer.job.form.button.return"/>
 
 
 

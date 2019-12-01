@@ -7,6 +7,8 @@ auditor.job.form.label.moreInfo = Más información:
 auditor.job.form.label.descriptor = Descriptor
 auditor.job.form.label.descriptor.description = Descripción
 auditor.job.form.label.descriptor.duties = Deberes:
+auditor.job.form.label.status.draft = Borrador
+auditor.job.form.label.status.published = Publicado
 auditor.job.form.button.return = Volver
 
 auditor.job.list.label.title = Título

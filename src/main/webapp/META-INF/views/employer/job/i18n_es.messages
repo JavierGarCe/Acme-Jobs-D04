@@ -12,6 +12,8 @@ employer.job.form.label.duty = Tarea
 employer.job.form.label.duty.title = Título:
 employer.job.form.label.duty.description = Descripción:
 employer.job.form.label.duty.percentage = Porcentaje:
+employer.job.form.label.status.draft = Borrador
+employer.job.form.label.status.published = Publicado
 employer.job.form.button.return = Volver
 
 employer.job.list.label.title = Título
