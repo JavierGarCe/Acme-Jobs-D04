@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.jobs.Duty;
+import acme.entities.jobs.Job;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
@@ -20,5 +21,8 @@ public interface AuthenticatedDutyRepository extends AbstractRepository {
 
 	@Query("select j.id from Job j join j.descriptor.duties d where d.id= ?1")
 	int findJobIdByDutyId(int id);
+
+	@Query("select j from Job j where j.id = ?1")
+	Job findJobById(int id);
 
 }

@@ -1,6 +1,9 @@
 
 package acme.features.authenticated.auditRecord;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +30,8 @@ public class AuthenticatedAuditRecordShowService implements AbstractShowService<
 
 		arId = request.getModel().getInteger("id");
 		ar = this.repository.findOneAuditRecordById(arId);
-		return ar.getStatus().equals(Status.PUBLISHED);
+		Calendar calendar = new GregorianCalendar();
+		return ar.getStatus().equals(Status.PUBLISHED) && ar.getJob().getDeadline().after(calendar.getTime()) && ar.getJob().getStatus().equals(Status.PUBLISHED);
 	}
 
 	@Override
