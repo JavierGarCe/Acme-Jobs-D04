@@ -4,6 +4,7 @@ package acme.features.worker.auditRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.Status;
 import acme.entities.auditRecords.AuditRecord;
 import acme.entities.roles.Worker;
 import acme.framework.components.Model;
@@ -21,11 +22,14 @@ public class WorkerAuditRecordShowService implements AbstractShowService<Worker,
 	@Override
 	public boolean authorise(final Request<AuditRecord> request) {
 		assert request != null;
-		int AuditRecordId = request.getModel().getInteger("id");
-		int jobId = this.repository.findJobIdByAuditorRecordId(AuditRecordId);
+		Integer AuditRecordId = request.getModel().getInteger("id");
+		AuditRecord aud = this.repository.findOneAuditRecordById(AuditRecordId);
+		assert aud != null;
+		Integer jobId = this.repository.findJobIdByAuditorRecordId(AuditRecordId);
+		assert jobId != null;
 		Principal principal = request.getPrincipal();
 
-		return this.repository.findNumberApplicationsByJobId(jobId, principal.getActiveRoleId()) > 0; //el worker debe haber hecho al menos una application al trabajo en cuestion para ver sus audit records
+		return aud.getStatus().equals(Status.PUBLISHED) && this.repository.findNumberApplicationsByJobId(jobId, principal.getActiveRoleId()) > 0; //el worker debe haber hecho al menos una application al trabajo en cuestion para ver sus audit records
 	}
 
 	@Override
