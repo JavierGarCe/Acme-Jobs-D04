@@ -40,7 +40,7 @@
 	<acme:form-textarea code="worker.application.form.label.qualifications" path="qualifications" />
 
 	<button type="button" class="btn btn-primary"
-		onclick="javascript: pushReturnUrl('/worker/application/show?id=${id}'); redirect('/authenticated/job/show?id=${idJob}')">
+		onclick="javascript: pushReturnUrl('/worker/application/show?id=${id}'); redirect('/worker/job/show?id=${idJob}')">
 		<acme:message code="employer.application.form.button.job" />
 	</button>
 
