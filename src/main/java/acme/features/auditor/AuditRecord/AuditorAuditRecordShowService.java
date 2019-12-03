@@ -4,10 +4,12 @@ package acme.features.auditor.AuditRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.Status;
 import acme.entities.auditRecords.AuditRecord;
 import acme.entities.roles.Auditor;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
@@ -20,8 +22,19 @@ public class AuditorAuditRecordShowService implements AbstractShowService<Audito
 	@Override
 	public boolean authorise(final Request<AuditRecord> request) {
 		assert request != null;
+		boolean result;
+		int arId;
+		AuditRecord ar;
+		Auditor auditor;
+		Principal principal;
 
-		return true;
+		arId = request.getModel().getInteger("id");
+		ar = this.repository.findOneAuditRecordById(arId);
+		auditor = ar.getAuditor();
+		principal = request.getPrincipal();
+		result = ar.getStatus().equals(Status.PUBLISHED) || !ar.getStatus().equals(Status.PUBLISHED) && auditor.getUserAccount().getId() == principal.getAccountId();
+
+		return result;
 	}
 
 	@Override
