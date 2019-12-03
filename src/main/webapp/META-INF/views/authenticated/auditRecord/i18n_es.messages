@@ -6,3 +6,5 @@ authenticated.auditRecord.form.label.moment = Momento
 authenticated.auditRecord.form.label.status = Estado
 authenticated.auditRecord.form.label.body = Cuerpo
 authenticated.auditRecord.form.button.return = Volver
+authenticated.auditRecord.form.label.status.draft = Borrador
+authenticated.auditRecord.form.label.status.published = Publicado
