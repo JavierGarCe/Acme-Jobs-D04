@@ -1,40 +1,35 @@
 
-package acme.features.auditor.AuditRecord;
+package acme.features.worker.auditRecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.datatypes.Status;
 import acme.entities.auditRecords.AuditRecord;
-import acme.entities.roles.Auditor;
+import acme.entities.roles.Worker;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 
 @Service
-public class AuditorAuditRecordShowService implements AbstractShowService<Auditor, AuditRecord> {
+public class WorkerAuditRecordShowService implements AbstractShowService<Worker, AuditRecord> {
 
 	@Autowired
-	AuditorAuditRecordRepository repository;
+	WorkerAuditRecordRepository repository;
 
 
 	@Override
 	public boolean authorise(final Request<AuditRecord> request) {
 		assert request != null;
-		boolean result;
-		int arId;
-		AuditRecord ar;
-		Auditor auditor;
-		Principal principal;
+		Integer AuditRecordId = request.getModel().getInteger("id");
+		AuditRecord aud = this.repository.findOneAuditRecordById(AuditRecordId);
+		assert aud != null;
+		Integer jobId = this.repository.findJobIdByAuditorRecordId(AuditRecordId);
+		assert jobId != null;
+		Principal principal = request.getPrincipal();
 
-		arId = request.getModel().getInteger("id");
-		ar = this.repository.findOneAuditRecordById(arId);
-		auditor = ar.getAuditor();
-		principal = request.getPrincipal();
-		result = ar.getStatus().equals(Status.PUBLISHED) || !ar.getStatus().equals(Status.PUBLISHED) && auditor.getUserAccount().getId() == principal.getAccountId();
-
-		return result;
+		return aud.getStatus().equals(Status.PUBLISHED) && this.repository.findNumberApplicationsByJobId(jobId, principal.getActiveRoleId()) > 0; //el worker debe haber hecho al menos una application al trabajo en cuestion para ver sus audit records
 	}
 
 	@Override

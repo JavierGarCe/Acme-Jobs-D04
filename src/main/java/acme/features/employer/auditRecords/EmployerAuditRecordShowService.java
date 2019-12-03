@@ -4,6 +4,7 @@ package acme.features.employer.auditRecords;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.Status;
 import acme.entities.auditRecords.AuditRecord;
 import acme.entities.jobs.Job;
 import acme.entities.roles.Employer;
@@ -22,7 +23,8 @@ public class EmployerAuditRecordShowService implements AbstractShowService<Emplo
 	@Override
 	public boolean authorise(final Request<AuditRecord> request) {
 		assert request != null;
-		boolean result;
+
+    boolean result;
 		int id;
 		int jobId;
 		Job job;
@@ -35,8 +37,13 @@ public class EmployerAuditRecordShowService implements AbstractShowService<Emplo
 		employer = job.getEmployer();
 		principal = request.getPrincipal();
 		result = employer.getUserAccount().getId() == principal.getAccountId();
+    
+		AuditRecord ar;
 
-		return result;
+		ar = this.repository.findOneAuditRecordById(id);
+		result = result && ar.getStatus().equals(Status.PUBLISHED);
+
+		return result ;
 	}
 
 	@Override
