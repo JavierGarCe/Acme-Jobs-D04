@@ -24,26 +24,27 @@ public class EmployerAuditRecordShowService implements AbstractShowService<Emplo
 	public boolean authorise(final Request<AuditRecord> request) {
 		assert request != null;
 
-    boolean result;
+		boolean result;
 		int id;
-		int jobId;
+		Integer jobId;
 		Job job;
 		Employer employer;
 		Principal principal;
 
 		id = request.getModel().getInteger("id");
 		jobId = this.repository.findJobIdByAuditRecordId(id);
+		assert jobId != null;
 		job = this.repository.findOneJobById(jobId);
 		employer = job.getEmployer();
 		principal = request.getPrincipal();
 		result = employer.getUserAccount().getId() == principal.getAccountId();
-    
+
 		AuditRecord ar;
 
 		ar = this.repository.findOneAuditRecordById(id);
 		result = result && ar.getStatus().equals(Status.PUBLISHED);
 
-		return result ;
+		return result;
 	}
 
 	@Override

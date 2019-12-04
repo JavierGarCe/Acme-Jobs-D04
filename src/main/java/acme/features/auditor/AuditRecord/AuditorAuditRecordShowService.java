@@ -32,7 +32,7 @@ public class AuditorAuditRecordShowService implements AbstractShowService<Audito
 		ar = this.repository.findOneAuditRecordById(arId);
 		auditor = ar.getAuditor();
 		principal = request.getPrincipal();
-		result = ar.getStatus().equals(Status.PUBLISHED) || !ar.getStatus().equals(Status.PUBLISHED) && auditor.getUserAccount().getId() == principal.getAccountId();
+		result = ar.getStatus().equals(Status.PUBLISHED) || !ar.getStatus().equals(Status.PUBLISHED) && auditor.getUserAccount().getId() == principal.getAccountId(); //Solo puedo ver un audit record si es mio o si esta published
 
 		return result;
 	}

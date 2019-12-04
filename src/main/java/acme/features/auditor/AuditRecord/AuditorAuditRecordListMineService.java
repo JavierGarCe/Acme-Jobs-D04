@@ -44,19 +44,8 @@ public class AuditorAuditRecordListMineService implements AbstractListService<Au
 		Collection<AuditRecord> result;
 		jobId = request.getModel().getInteger("id");
 		Principal principal = request.getPrincipal();
-		Boolean b = false;
 
-		for (AuditRecord a : this.repository.findManyByJobId(jobId)) {
-			if (a.getAuditor().getId() == principal.getActiveRoleId()) {
-				b = true;
-			}
-		}
-		if (b) {
-			result = this.repository.findManyByJobandAuditorId(jobId, principal.getActiveRoleId());
-		} else {
-
-			result = this.repository.findManyByJobIdActives(jobId);
-		}
+		result = this.repository.findManyByJobIdActives(jobId, principal.getActiveRoleId());
 
 		return result;
 	}

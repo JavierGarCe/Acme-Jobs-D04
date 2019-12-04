@@ -24,13 +24,14 @@ public class EmployerDutyShowService implements AbstractShowService<Employer, Du
 		assert request != null;
 		boolean result;
 		int id;
-		int jobId;
+		Integer jobId;
 		Job job;
 		Employer employer;
 		Principal principal;
 
 		id = request.getModel().getInteger("id");
 		jobId = this.repository.findJobIdByDutyId(id);
+		assert jobId != null;
 		job = this.repository.findOneJobById(jobId);
 		employer = job.getEmployer();
 		principal = request.getPrincipal();

@@ -1,8 +1,9 @@
 
 package acme.features.authenticated.job;
 
-import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,15 +38,13 @@ public class AuthenticatedJobShowService implements AbstractShowService<Authenti
 		status = job.getStatus();
 		deadline = job.getDeadline();
 
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-		Date nowDate = new Date(System.currentTimeMillis());
-		formatter.format(nowDate);
+		Calendar cal = new GregorianCalendar();
 
 		if (!status.equals(Status.PUBLISHED)) {
 			res = false;
 		}
 
-		if (nowDate.compareTo(deadline) > 0) {
+		if (deadline.before(cal.getTime())) {
 			res = false;
 		}
 

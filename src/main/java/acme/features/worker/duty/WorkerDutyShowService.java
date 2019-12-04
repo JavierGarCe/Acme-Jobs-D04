@@ -23,7 +23,8 @@ public class WorkerDutyShowService implements AbstractShowService<Worker, Duty> 
 		assert request != null;
 
 		int dutyId = request.getModel().getInteger("id");
-		int jobId = this.repository.findJobIdByDutyId(dutyId);
+		Integer jobId = this.repository.findJobIdByDutyId(dutyId);
+		assert jobId != null;
 		Principal principal;
 
 		principal = request.getPrincipal();
