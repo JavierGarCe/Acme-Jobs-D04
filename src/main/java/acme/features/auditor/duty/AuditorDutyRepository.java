@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.jobs.Duty;
+import acme.entities.jobs.Job;
 import acme.framework.repositories.AbstractRepository;
 
 @Repository
@@ -19,6 +20,12 @@ public interface AuditorDutyRepository extends AbstractRepository {
 	Collection<Duty> findDutiesByJobId(int id);
 
 	@Query("select j.id from Job j join j.descriptor.duties d where d.id= ?1")
-	int findJobIdByDutyId(int id);
+	Integer findJobIdByDutyId(int id);
+
+	@Query("select j from Job j where j.id = ?1")
+	Job findOneJobById(int JobId);
+
+	@Query("select count(a) from AuditRecord a where a.job.id=?1 and a.auditor.id = ?2")
+	Integer countMyAuditRecords(int jobId, int auditorId);
 
 }
