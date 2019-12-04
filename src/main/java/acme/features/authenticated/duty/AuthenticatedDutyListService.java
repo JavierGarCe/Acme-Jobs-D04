@@ -1,12 +1,16 @@
 
 package acme.features.authenticated.duty;
 
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.Status;
 import acme.entities.jobs.Duty;
+import acme.entities.jobs.Job;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
@@ -22,7 +26,12 @@ public class AuthenticatedDutyListService implements AbstractListService<Authent
 	@Override
 	public boolean authorise(final Request<Duty> request) {
 		assert request != null;
-		return true;
+		boolean res;
+		int jobId = request.getModel().getInteger("id");
+		Calendar calendar = new GregorianCalendar();
+		Job job = this.repository.findJobById(jobId);
+		res = job.getDeadline().after(calendar.getTime()) && job.getStatus().equals(Status.PUBLISHED);
+		return res;
 	}
 
 	@Override

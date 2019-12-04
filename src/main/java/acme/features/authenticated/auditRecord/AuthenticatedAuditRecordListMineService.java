@@ -1,12 +1,16 @@
 
 package acme.features.authenticated.auditRecord;
 
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.GregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.datatypes.Status;
 import acme.entities.auditRecords.AuditRecord;
+import acme.entities.jobs.Job;
 import acme.framework.components.Model;
 import acme.framework.components.Request;
 import acme.framework.entities.Authenticated;
@@ -22,8 +26,10 @@ public class AuthenticatedAuditRecordListMineService implements AbstractListServ
 	@Override
 	public boolean authorise(final Request<AuditRecord> request) {
 		assert request != null;
-
-		return true;
+		int idJob = request.getModel().getInteger("id");
+		Job job = this.repository.findJobById(idJob);
+		Calendar calendar = new GregorianCalendar();
+		return job.getDeadline().after(calendar.getTime()) && job.getStatus().equals(Status.PUBLISHED);
 	}
 
 	@Override
