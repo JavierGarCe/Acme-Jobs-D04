@@ -28,7 +28,9 @@ public class AuthenticatedDutyShowService implements AbstractShowService<Authent
 		boolean res;
 		int dutyId = request.getModel().getInteger("id");
 		Calendar calendar = new GregorianCalendar();
-		Job job = this.repository.findJobById(this.repository.findJobIdByDutyId(dutyId));
+		Integer jobId = this.repository.findJobIdByDutyId(dutyId);
+		assert jobId != null;
+		Job job = this.repository.findJobById(jobId);
 		res = job.getDeadline().after(calendar.getTime()) && job.getStatus().equals(Status.PUBLISHED);
 		return res;
 	}
